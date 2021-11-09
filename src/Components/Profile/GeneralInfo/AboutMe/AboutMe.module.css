@@ -1,0 +1,42 @@
+.inner{
+    box-shadow: 0 0 40px 0 rgba(94,92,154, .16);
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 32px 28px;
+}
+.title{
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1em;
+    color: #3e3f5e;
+    margin-bottom: 35px;
+}
+.line{
+    display: flex;
+    justify-content: space-between;
+}
+.line + .line{
+    margin-top: 15px;
+}
+.description{
+    max-width: 228px;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.7142857143em;
+    font-weight: 500;
+    word-break: break-word;
+    color: #3e3f5e;
+    margin-bottom: 25px;
+}
+
+.line p{
+    color: #8f91ac;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4285714286em;
+    word-break: break-word;
+}
+
+.line p:nth-child(2){
+    color: #3e3f5e;
+}

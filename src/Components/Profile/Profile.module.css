@@ -1,0 +1,131 @@
+.inner{
+    max-width: 1180px;
+    width: 100%;
+    margin-left: 80px;
+    padding: 30px 0 100px;
+
+}
+.header{
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 0 40px 0 rgba(94,92,154, .26);
+    padding-bottom: 30px;
+    height: 525px;
+}
+.header_info{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    padding: 45px 20px 0px 20px;
+    align-items: center;
+    height: 60px;
+}
+.bg{
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 400px;
+    object-fit: cover;
+}
+.header_left{
+    display: flex;
+}
+.header_left_box{
+    padding: 0px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.header_left_box + .header_left_box:after{
+    content: '';
+    height: 25px;
+    width: 1px;
+    background-color: #939394;
+    position: absolute;
+    top: 6px;
+    left: 0px;
+}
+.header_left_box p + p{
+    margin-top: 10px;
+}
+.header_left_box p:first-child{
+    color: #3e3f5e;
+    font-size: 1.375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1em;
+}
+.header_left_box p:nth-child(2){
+    color: #adafca;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1em;
+    font-weight: 700;
+}
+.header_mid{
+    position: relative;
+    left: 0%;
+    top: -85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.avatar_box{
+    width: 140px;
+    height: 140px;
+    background-color: #f8f8fb;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 40px 0 rgba(94,92,154, .6);
+
+}
+.avatar{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
+.header_mid_box{
+    position: relative;
+}
+.userName{
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1em;
+    color: #3e3f5e;
+    margin-top: 15px;
+}
+.userMembership{
+    padding: 4px 8px;
+    border-radius: 200px;
+    background-color: #615dfa;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 5px;
+}
+.userLevel{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #615dfa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f8f8fb;
+    font-weight: 700;
+    position: absolute;
+    bottom: 0px;
+    right: 25px;
+}
+.socialLinks{
+    width: 300px;
+}
+.main_content{
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-between;
+}

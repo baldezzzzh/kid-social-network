@@ -1,0 +1,20 @@
+.icons{
+    display: flex;
+}
+.icon{
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 40px 0 rgba(94,92,154, .36);
+}
+.icon + .icon{
+    margin-left: 20px;
+}
+.iconImg{
+    width: 30px;
+    height: 30px;
+}

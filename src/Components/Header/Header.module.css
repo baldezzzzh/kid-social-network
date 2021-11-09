@@ -1,0 +1,73 @@
+header{
+    background-color: #442783;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100000;
+    color: aliceblue;
+}
+.inner{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 40px;
+    align-items: center;
+    height: 100%;
+}
+.logoInner{
+    display: flex;
+    align-items: center;
+}
+.logoInner p{
+    color: aliceblue;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    font-family: 'Titillium Web', sans-serif;
+}
+.logo{
+    display: flex;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    object-fit: contain;
+    text-decoration: none;
+    margin-right: 20px;
+}
+.menu{
+    display: flex;
+}
+.menu li{
+    list-style: none;
+}
+.menu li + li{
+    margin-left: 45px;
+}
+.menu li a{
+    text-decoration: none;
+    color: aliceblue;
+    font-weight: 600;
+}
+.login{
+    text-decoration: none;
+    color: aliceblue;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0px 26px;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 48px;
+    border-radius: 10px;
+    background-color: #23d2e2;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    box-shadow: 4px 7px 12px 0 rgba(35,210,226, .2);
+    border: none;
+}
