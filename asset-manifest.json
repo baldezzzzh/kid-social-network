@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/kid-social-network/static/css/main.e28c1bb6.chunk.css",
-    "main.js": "/kid-social-network/static/js/main.a7bb33f0.chunk.js",
-    "main.js.map": "/kid-social-network/static/js/main.a7bb33f0.chunk.js.map",
+    "main.css": "/kid-social-network/static/css/main.4540bf04.chunk.css",
+    "main.js": "/kid-social-network/static/js/main.c76af756.chunk.js",
+    "main.js.map": "/kid-social-network/static/js/main.c76af756.chunk.js.map",
     "runtime-main.js": "/kid-social-network/static/js/runtime-main.847d3d19.js",
     "runtime-main.js.map": "/kid-social-network/static/js/runtime-main.847d3d19.js.map",
-    "static/js/2.19735ba2.chunk.js": "/kid-social-network/static/js/2.19735ba2.chunk.js",
-    "static/js/2.19735ba2.chunk.js.map": "/kid-social-network/static/js/2.19735ba2.chunk.js.map",
+    "static/js/2.824c3add.chunk.js": "/kid-social-network/static/js/2.824c3add.chunk.js",
+    "static/js/2.824c3add.chunk.js.map": "/kid-social-network/static/js/2.824c3add.chunk.js.map",
     "static/js/3.5111231a.chunk.js": "/kid-social-network/static/js/3.5111231a.chunk.js",
     "static/js/3.5111231a.chunk.js.map": "/kid-social-network/static/js/3.5111231a.chunk.js.map",
     "index.html": "/kid-social-network/index.html",
-    "static/css/main.e28c1bb6.chunk.css.map": "/kid-social-network/static/css/main.e28c1bb6.chunk.css.map",
-    "static/js/2.19735ba2.chunk.js.LICENSE.txt": "/kid-social-network/static/js/2.19735ba2.chunk.js.LICENSE.txt",
+    "static/css/main.4540bf04.chunk.css.map": "/kid-social-network/static/css/main.4540bf04.chunk.css.map",
+    "static/js/2.824c3add.chunk.js.LICENSE.txt": "/kid-social-network/static/js/2.824c3add.chunk.js.LICENSE.txt",
     "static/media/crown.baa223b2.svg": "/kid-social-network/static/media/crown.baa223b2.svg",
     "static/media/header-logo.d120a713.png": "/kid-social-network/static/media/header-logo.d120a713.png",
     "static/media/instagram.0b3e8a0c.svg": "/kid-social-network/static/media/instagram.0b3e8a0c.svg",
@@ -28,8 +28,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.847d3d19.js",
-    "static/js/2.19735ba2.chunk.js",
-    "static/css/main.e28c1bb6.chunk.css",
-    "static/js/main.a7bb33f0.chunk.js"
+    "static/js/2.824c3add.chunk.js",
+    "static/css/main.4540bf04.chunk.css",
+    "static/js/main.c76af756.chunk.js"
   ]
 }
