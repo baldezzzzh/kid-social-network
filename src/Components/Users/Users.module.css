@@ -2,16 +2,66 @@
     box-shadow: 0 0 40px 0 rgba(94,92,154, .16);
     background-color: #fff;
     border-radius: 12px;
-    max-width: 520px;
+    max-width: 1180px;
     width: 100%;
+    margin-left: 80px;
+    margin-top: 30px;
+}
+.user_inner{
+    display: flex;
+    flex-wrap: wrap;
     padding: 32px 28px 28px 28px;
-    margin-left: 40px;
 }
 .user{
     box-shadow: 0 0 40px 0 rgba(94,92,154, .16);
     border-radius: 12px;
-    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 285px;
+    padding: 32px 28px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
 }
-.user + .user{
+.user:last-child{
+    margin-right: 0px;
+}
+
+.avatar{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #442783;
+}
+.userName{
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: #3e3f5e;
     margin-top: 15px;
+    margin-bottom: 15px;
+}
+.user p {
+    margin-bottom: 15px;
+}
+.userBtn{
+    text-decoration: none;
+    display: flex;
+    padding: 0px 26px;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    border-radius: 10px;
+    background-color: #23d2e2;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+    box-shadow: 0 0 40px 0 rgba(94,92,154, .26);
+    border: none;
+    margin-bottom: 15px;
 }

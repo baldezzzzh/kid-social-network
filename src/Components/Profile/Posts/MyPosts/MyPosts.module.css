@@ -27,9 +27,17 @@
     height: 25px;
     margin-right: 5px;
     cursor: pointer;
+
 }
 .likesInner{
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+.likesBtn{
+    border: none;
+    background-color: transparent;
+}
+.likesCount{
+    width: 15px;
 }

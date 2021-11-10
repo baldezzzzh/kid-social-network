@@ -36,6 +36,20 @@ const initState: UserPageType = {
                 city: 'Miami'
             },
             followed: false
+        },
+        {
+            id: '4', name: 'Eleija', message: 'Wazzzup dude?', location: {
+                country: 'USA',
+                city: 'Texas'
+            },
+            followed: false
+        },
+        {
+            id: '5', name: 'Johny', message: 'Lets play some basketball?', location: {
+                country: 'Kanada',
+                city: 'Toronto'
+            },
+            followed: false
         }
     ]
 }

@@ -21,10 +21,10 @@ const MyPosts = () => {
                     <p className={classes.message}>{t.message}</p>
                 </div>
                 <div className={classes.likesInner}>
-                    <a href="#" onClick={()=>onClickHandler(t.id, t.likesCounter)}>
+                    <button className={classes.likesBtn} onClick={()=>onClickHandler(t.id, t.likesCounter)}>
                         <img src={crownIcon} alt="crown" className={classes.crown}/>
-                    </a>
-                    <p>{t.likesCounter}</p>
+                    </button>
+                    <p className={classes.likesCount}>{t.likesCounter}</p>
                 </div>
 
             </div>

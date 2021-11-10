@@ -42,7 +42,7 @@ const initState: ProfilePageType = {
     },
     newPostMessage: 'He He suiii!',
     aboutUserInfo: {
-        userDescription: 'Hi! My name is Marina but some people may know me as GameHuntress! ' +
+        userDescription: 'Hi! My name is Julius but some people may know me as GameHunter! ' +
             'I have a Twitch channel where I stream, play and review all the newest games.',
         joinTime: 'September 23, 2020',
         userAddress: 'Los Angeles, California'

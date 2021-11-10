@@ -4,9 +4,9 @@ import User from "./User";
 
 const Users = () => {
     return(
-        <div className={classes.users}>
+        <section className={classes.users}>
             <User/>
-        </div>
+        </section>
     )
 }
 
