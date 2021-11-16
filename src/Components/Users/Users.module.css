@@ -63,5 +63,5 @@
     transition: background-color .2s ease-in-out, color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
     box-shadow: 0 0 40px 0 rgba(94,92,154, .26);
     border: none;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
