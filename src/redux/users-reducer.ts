@@ -1,6 +1,12 @@
 
 export type UserPageType = {
     users: Array<UsersType>
+    pagesNumber: number
+    usersCount: number
+    currentPage: number
+    totalCount: number
+    isFetching: boolean
+
 }
 
 export type UsersType = {
@@ -12,49 +18,20 @@ export type UsersType = {
         city: string
     }
     followed: boolean
+    photos: {
+        small: string
+        large: string
+    }
 }
-const initState: any = {
-    users: []
+const initState: UserPageType = {
+    users: [],
+    pagesNumber: 5,
+    usersCount: 10,
+    currentPage: 2,
+    totalCount: 10,
+    isFetching: true
 }
-// const initState: UserPageType = {
-//     users: [
-//         {
-//             id: '1', name: 'Jacob', message: 'Hi hi', location: {
-//                 country: 'USA',
-//                 city: 'Los Angeles'
-//             },
-//             followed: false
-//         },
-//         {
-//             id: '2', name: 'Julia', message: 'He he', location: {
-//                 country: 'Sweden',
-//                 city: 'Stockgolm'
-//             },
-//             followed: false
-//         },
-//         {
-//             id: '3', name: 'James', message: 'Lebron', location: {
-//                 country: 'USA',
-//                 city: 'Miami'
-//             },
-//             followed: false
-//         },
-//         {
-//             id: '4', name: 'Eleija', message: 'Wazzzup dude?', location: {
-//                 country: 'USA',
-//                 city: 'Texas'
-//             },
-//             followed: false
-//         },
-//         {
-//             id: '5', name: 'Johny', message: 'Lets play some basketball?', location: {
-//                 country: 'Kanada',
-//                 city: 'Toronto'
-//             },
-//             followed: false
-//         }
-//     ]
-// }
+
 
 
 const usersReducer = (state: UserPageType = initState, action: GenericType) => {
@@ -77,6 +54,24 @@ const usersReducer = (state: UserPageType = initState, action: GenericType) => {
                 users: action.users
             }
         }
+        case "SET-TOTAL-USERS-COUNT": {
+            return {
+                ...state,
+                totalCount: action.totalCount
+            }
+        }
+        case "SET-CURRENT-PAGE": {
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+        }
+        case "SET-PRELOADER": {
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
+        }
         default: {
             return state
         }
@@ -84,7 +79,7 @@ const usersReducer = (state: UserPageType = initState, action: GenericType) => {
 }
 
 
-type GenericType = followUserACType | unfollowUserACType | setUsersACType;
+type GenericType = followUserACType | unfollowUserACType | setUsersACType |  setTotalUsersCountType | setCurrentPageType | setISFetchingType;
 
 export type followUserACType = ReturnType<typeof followUserAC>
 export const followUserAC = (userId: string) => {
@@ -109,5 +104,30 @@ export const setUsersAC = (users: Array<UserPageType>) => {
         users
     } as const
 }
+
+export type setTotalUsersCountType = ReturnType<typeof setTotalUsersCount>
+export const setTotalUsersCount = (totalCount: number) => {
+    return{
+        type: 'SET-TOTAL-USERS-COUNT',
+        totalCount
+    } as const
+}
+
+export type setCurrentPageType = ReturnType<typeof setCurrentPage>
+export const setCurrentPage = (currentPage: number) => {
+    return{
+        type: 'SET-CURRENT-PAGE',
+        currentPage
+    } as const
+}
+
+export type setISFetchingType = ReturnType<typeof setISFetching>
+export const setISFetching = (isFetching: boolean) => {
+    return{
+        type: 'SET-PRELOADER',
+        isFetching
+    } as const
+}
+
 
 export default usersReducer

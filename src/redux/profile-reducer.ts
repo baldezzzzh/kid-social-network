@@ -4,6 +4,7 @@ export type ProfilePageType = {
     profileInfo: ProfileInfo
     newPostMessage: string
     aboutUserInfo: UserType
+    userProfile: UserProfileType
 
 }
 export type PostType = {
@@ -15,14 +16,25 @@ export type ProfileInfo = {
     postsNumber: number
     friendsNumber: number
     commentsNumber: number
-    avatar: string
+    // avatar: string
     userName: string
     membership: string
+    photos: {
+        small: string
+        large: string
+    }
 }
 export type UserType = {
     userDescription: string
     joinTime: string
     userAddress: string
+}
+export type UserProfileType = {
+        photos: {
+            small: string
+            large: string
+        }
+        fullName: string
 }
 
 
@@ -36,9 +48,20 @@ const initState: ProfilePageType = {
         postsNumber: 10,
         friendsNumber: 22,
         commentsNumber: 15,
-        avatar: 'https://e7.pngegg.com/pngimages/1009/704/png-clipart-avatar-child-computer-icons-user-profile-smiling-boy-child-face-thumbnail.png',
+        photos: {
+            small: '',
+            large: ''
+        },
+        // avatar: 'https://e7.pngegg.com/pngimages/1009/704/png-clipart-avatar-child-computer-icons-user-profile-smiling-boy-child-face-thumbnail.png',
         userName: 'Julius Kenard',
-        membership: 'Pro Member'
+        membership: 'Pro Member',
+    },
+    userProfile: {
+        photos: {
+            small: '',
+            large: ''
+        },
+        fullName: 'Julius Kenard'
     },
     newPostMessage: 'He He suiii!',
     aboutUserInfo: {
@@ -72,11 +95,18 @@ const profileReducer = (state: ProfilePageType = initState, action: GenericType)
                 posts: state.posts.map( p => action.postId === p.id ? {...p, likesCounter: action.likesCounter + 1 } : p )
             }
         }
+        case "SET-USER-PROFILE": {
+            return {
+                ...state,
+                userProfile: action.userProfile
+            }
+        }
+
     }
     return state
 }
 
-export type GenericType = updateNewPostMessageACType | addNewPostACType | incLikesACType;
+export type GenericType = updateNewPostMessageACType | addNewPostACType | incLikesACType | setUserProfileType;
 
 export type updateNewPostMessageACType = ReturnType<typeof updateNewPostMessageAC>
 export const updateNewPostMessageAC = (value: string) => {
@@ -103,6 +133,13 @@ export const incLikesAC = (postId: string, likesCounter: number) => {
     } as const
 }
 
+export type setUserProfileType = ReturnType<typeof setUserProfile>
+export const setUserProfile = (userProfile: any) => {
+    return{
+        type: 'SET-USER-PROFILE',
+        userProfile
+    } as const
+}
 
 
 export default profileReducer

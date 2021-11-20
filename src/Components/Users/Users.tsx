@@ -1,11 +1,11 @@
 import React from "react";
 import classes from "./Users.module.css";
-import User from "./User";
+import UsersElements from "./UsersElements";
 
 const Users = () => {
     return(
         <section className={classes.users}>
-            <User/>
+            <UsersElements/>
         </section>
     )
 }
