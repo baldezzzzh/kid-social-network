@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/kid-social-network/static/css/main.ecd69ff0.chunk.css",
-    "main.js": "/kid-social-network/static/js/main.0f939fe8.chunk.js",
-    "main.js.map": "/kid-social-network/static/js/main.0f939fe8.chunk.js.map",
+    "main.css": "/kid-social-network/static/css/main.0d77a679.chunk.css",
+    "main.js": "/kid-social-network/static/js/main.57a77150.chunk.js",
+    "main.js.map": "/kid-social-network/static/js/main.57a77150.chunk.js.map",
     "runtime-main.js": "/kid-social-network/static/js/runtime-main.e383e318.js",
     "runtime-main.js.map": "/kid-social-network/static/js/runtime-main.e383e318.js.map",
-    "static/js/2.406b99ae.chunk.js": "/kid-social-network/static/js/2.406b99ae.chunk.js",
-    "static/js/2.406b99ae.chunk.js.map": "/kid-social-network/static/js/2.406b99ae.chunk.js.map",
+    "static/js/2.e1fce412.chunk.js": "/kid-social-network/static/js/2.e1fce412.chunk.js",
+    "static/js/2.e1fce412.chunk.js.map": "/kid-social-network/static/js/2.e1fce412.chunk.js.map",
     "static/js/3.4eebefd8.chunk.js": "/kid-social-network/static/js/3.4eebefd8.chunk.js",
     "static/js/3.4eebefd8.chunk.js.map": "/kid-social-network/static/js/3.4eebefd8.chunk.js.map",
     "index.html": "/kid-social-network/index.html",
-    "static/css/main.ecd69ff0.chunk.css.map": "/kid-social-network/static/css/main.ecd69ff0.chunk.css.map",
-    "static/js/2.406b99ae.chunk.js.LICENSE.txt": "/kid-social-network/static/js/2.406b99ae.chunk.js.LICENSE.txt",
+    "static/css/main.0d77a679.chunk.css.map": "/kid-social-network/static/css/main.0d77a679.chunk.css.map",
+    "static/js/2.e1fce412.chunk.js.LICENSE.txt": "/kid-social-network/static/js/2.e1fce412.chunk.js.LICENSE.txt",
     "static/media/crown.baa223b2.svg": "/kid-social-network/static/media/crown.baa223b2.svg",
     "static/media/header-logo.d120a713.png": "/kid-social-network/static/media/header-logo.d120a713.png",
     "static/media/instagram.0b3e8a0c.svg": "/kid-social-network/static/media/instagram.0b3e8a0c.svg",
     "static/media/messages.1bad7cf9.svg": "/kid-social-network/static/media/messages.1bad7cf9.svg",
     "static/media/music.1bac8f02.svg": "/kid-social-network/static/media/music.1bac8f02.svg",
     "static/media/news.04e09e6f.svg": "/kid-social-network/static/media/news.04e09e6f.svg",
+    "static/media/preloader.4ccf66d6.gif": "/kid-social-network/static/media/preloader.4ccf66d6.gif",
     "static/media/profile-bg.c2555e70.png": "/kid-social-network/static/media/profile-bg.c2555e70.png",
     "static/media/profile.9d4d5a29.svg": "/kid-social-network/static/media/profile.9d4d5a29.svg",
     "static/media/settings.627fc741.svg": "/kid-social-network/static/media/settings.627fc741.svg",
@@ -28,8 +29,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.e383e318.js",
-    "static/js/2.406b99ae.chunk.js",
-    "static/css/main.ecd69ff0.chunk.css",
-    "static/js/main.0f939fe8.chunk.js"
+    "static/js/2.e1fce412.chunk.js",
+    "static/css/main.0d77a679.chunk.css",
+    "static/js/main.57a77150.chunk.js"
   ]
 }
