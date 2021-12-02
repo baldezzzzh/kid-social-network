@@ -35,12 +35,10 @@ const UsersElements = () => {
     const setCurrentPageHandler = (currentPage: number) => {
         dispatch(setCurrentPage(currentPage))
         dispatch(setISFetching(true))
-        axios.defaults.withCredentials = true;
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersPage.usersCount}&page=${currentPage}` , {
             withCredentials: true,
             headers: {
                 "API-KEY": "0c12297a-a516-42d3-9509-82bfb5d48238",
-                'Access-Control-Allow-Origin': '*',
             },
 
         })
@@ -53,7 +51,6 @@ const UsersElements = () => {
 
 
     useEffect(() => {
-        axios.defaults.withCredentials = true;
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersPage.usersCount}&page=${usersPage.currentPage}` , {
             withCredentials: true,
             headers: {
@@ -70,7 +67,6 @@ const UsersElements = () => {
 
 
     const onClickUnfollowHandler = (userId: string) => {
-        axios.defaults.withCredentials = true;
         dispatch(setISFollowed(true, userId))
         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
             withCredentials: true,
@@ -88,7 +84,6 @@ const UsersElements = () => {
         console.log(usersPage.s)
     }
     const onClickFollowHandler = (userId: string) => {
-        axios.defaults.withCredentials = true;
         dispatch(setISFollowed(true, userId))
         axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {
             withCredentials: true,
