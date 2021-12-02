@@ -38,8 +38,10 @@ const UsersElements = () => {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersPage.usersCount}&page=${currentPage}` , {
             withCredentials: true,
             headers: {
-                "API-KEY": "0c12297a-a516-42d3-9509-82bfb5d48238"
-            }
+                "API-KEY": "0c12297a-a516-42d3-9509-82bfb5d48238",
+                'Access-Control-Allow-Origin': '*',
+            },
+
         })
 
             .then(responce => {
