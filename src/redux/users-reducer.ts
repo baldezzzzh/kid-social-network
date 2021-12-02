@@ -6,6 +6,8 @@ export type UserPageType = {
     currentPage: number
     totalCount: number
     isFetching: boolean
+    isFollowed: Array<string>
+    s: boolean
 
 }
 
@@ -29,7 +31,9 @@ const initState: UserPageType = {
     usersCount: 10,
     currentPage: 2,
     totalCount: 10,
-    isFetching: true
+    isFetching: true,
+    isFollowed: [],
+    s: false
 }
 
 
@@ -72,6 +76,14 @@ const usersReducer = (state: UserPageType = initState, action: GenericType) => {
                 isFetching: action.isFetching
             }
         }
+        case "SET-IS-FOLLOWED": {
+            return {
+                ...state,
+                isFollowed: action.s
+                    ? [...state.isFollowed, action.userId]
+                    : [...state.isFollowed.filter(id => id !== action.userId)]
+            }
+        }
         default: {
             return state
         }
@@ -79,7 +91,8 @@ const usersReducer = (state: UserPageType = initState, action: GenericType) => {
 }
 
 
-type GenericType = followUserACType | unfollowUserACType | setUsersACType |  setTotalUsersCountType | setCurrentPageType | setISFetchingType;
+type GenericType = followUserACType | unfollowUserACType | setUsersACType
+    | setTotalUsersCountType | setCurrentPageType | setISFetchingType | setISFollowedType;
 
 export type followUserACType = ReturnType<typeof followUserAC>
 export const followUserAC = (userId: string) => {
@@ -126,6 +139,15 @@ export const setISFetching = (isFetching: boolean) => {
     return{
         type: 'SET-PRELOADER',
         isFetching
+    } as const
+}
+
+export type setISFollowedType = ReturnType<typeof setISFollowed>
+export const setISFollowed = (s: boolean, userId: string) => {
+    return{
+        type: 'SET-IS-FOLLOWED',
+        s,
+        userId
     } as const
 }
 

@@ -12,7 +12,7 @@ import {UserPageType} from "../../redux/users-reducer";
 import axios from "axios";
 
 
-const Profile = () => {
+const Profile = React.memo(() => {
 
     let profile = useSelector<RootReducerType, ProfilePageType>(state => state.profilePage)
     let dispatch = useDispatch();
@@ -67,6 +67,6 @@ const Profile = () => {
 
         </section>
     )
-}
+})
 
 export default Profile

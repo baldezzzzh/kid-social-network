@@ -9,7 +9,7 @@ type ButtonPropsType = {
 
 
 
-const Button = ({className, onClick, text}: ButtonPropsType) => {
+const Button = React.memo(({className, onClick, text}: ButtonPropsType) => {
 
     const onClickHandler = () => {
         onClick();
@@ -20,6 +20,6 @@ const Button = ({className, onClick, text}: ButtonPropsType) => {
             {text}
         </button>
     )
-}
+})
 
 export default Button

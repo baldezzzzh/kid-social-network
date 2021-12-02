@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./Header.module.css";
 import headerLogo from './headerImages/header-logo.png'
 import Button from "../Buttons/Button";
-const Header = () => {
+const Header = React.memo(() => {
+
     return(
         <header>
             <div className={classes.inner}>
@@ -34,6 +35,6 @@ const Header = () => {
             </div>
         </header>
     )
-}
+})
 
 export default Header

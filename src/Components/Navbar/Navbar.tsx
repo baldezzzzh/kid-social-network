@@ -7,7 +7,7 @@ import newsIcon from './images/news.svg'
 import musicIcon from './images/music.svg'
 import settingIcon from './images/settings.svg'
 import userIcon from './images/users.svg'
-const Navbar = () => {
+const Navbar = React.memo(() => {
     return(
         <nav className= {classes.navbar}>
             <ul className={classes.menu}>
@@ -50,6 +50,6 @@ const Navbar = () => {
             </ul>
         </nav>
     )
-}
+})
 
 export default Navbar

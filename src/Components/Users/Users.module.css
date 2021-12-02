@@ -71,6 +71,9 @@
     border: none;
     margin-bottom: 25px;
 }
+.userBtn:disabled{
+    background-color: #0f686e;
+}
 .activePaginationBtn,
 .paginationBtn{
     font-weight: bold;
