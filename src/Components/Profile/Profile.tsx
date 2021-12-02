@@ -17,12 +17,17 @@ const Profile = React.memo(() => {
     let profile = useSelector<RootReducerType, ProfilePageType>(state => state.profilePage)
     let dispatch = useDispatch();
 
-    useEffect( () => {
-        axios.get("https://social-network.samuraijs.com/api/1.0/profile/2")
+    useEffect(() => {
+        axios.get("https://social-network.samuraijs.com/api/1.0/profile/2", {
+            withCredentials: true,
+            headers: {
+                "API-KEY": "0c12297a-a516-42d3-9509-82bfb5d48238"
+            }
+        })
             .then(responce => {
                 dispatch(setUserProfile(responce.data))
             })
-    }, [] )
+    }, [])
 
 
     return (
