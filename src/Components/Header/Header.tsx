@@ -1,8 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import classes from "./Header.module.css";
 import headerLogo from './headerImages/header-logo.png'
 import Button from "../Buttons/Button";
+import {AuthApi} from "../../api/api";
+import {AuthStateType, setAuthData, setMyAuthData} from "../../redux/auth-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {RootReducerType} from "../../redux/store";
 const Header = React.memo(() => {
+
+    let authData = useSelector<RootReducerType, AuthStateType>(state => state.authPage)
+    let dispatch = useDispatch()
+
+    useEffect( () => {
+        dispatch(setMyAuthData())
+    } ,[] )
+
 
     return(
         <header>
@@ -30,7 +42,8 @@ const Header = React.memo(() => {
                 <div className={classes.search}>
                     <input type="search"/>
                 </div>
-                <Button className={classes.login} onClick={()=>{} } text={'Login'}/>
+                {authData.isAuth ? <p>{authData.data.login}</p> :  <Button className={classes.login} onClick={()=>{} } text={'Login'}/>}
+
                 {/*<a href="#" className={classes.login}>Login</a>*/}
             </div>
         </header>

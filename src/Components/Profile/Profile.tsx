@@ -3,34 +3,42 @@ import profileBg from './images/profile-bg.png'
 import classes from "./Profile.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {RootReducerType} from "../../redux/store";
-import {PostType, ProfilePageType, setUserProfile} from "../../redux/profile-reducer";
+import {PostType, ProfilePageType, setUSerProfile, setUserProfile} from "../../redux/profile-reducer";
 import SocialIcons from "./SocialIcon/SocialIcon";
 import Posts from "./Posts/Posts";
 import GeneralInfo from "./GeneralInfo/GeneralInfo";
 import AdditionalInfo from "./AdditionalInfo/AdditionalInfo";
 import {UserPageType} from "../../redux/users-reducer";
 import axios from "axios";
+import {Navigate, Route, useParams} from "react-router-dom";
+import {ProfileApi} from "../../api/api";
+import Login from "../Login";
+
+
 
 
 const Profile = React.memo(() => {
-
+    console.log('profile')
     let profile = useSelector<RootReducerType, ProfilePageType>(state => state.profilePage)
+    let isAuth = useSelector<RootReducerType, boolean>(state => state.authPage.isAuth)
     let dispatch = useDispatch();
 
+    let {id} = useParams();
+
+    if(!id){
+        id = '2';
+    }
+
     useEffect(() => {
-        axios.get("https://social-network.samuraijs.com/api/1.0/profile/2", {
-            withCredentials: true,
-            headers: {
-                "API-KEY": "0c12297a-a516-42d3-9509-82bfb5d48238"
-            }
-        })
-            .then(responce => {
-                dispatch(setUserProfile(responce.data))
-            })
-    }, [])
+        dispatch(setUSerProfile(id))
 
+    }, [id])
 
+    console.log(isAuth)
     return (
+        !isAuth ?
+            <Navigate replace to="/login" />
+            :
         <section className={classes.inner}>
             <div className={classes.header}>
                 <img src={profileBg} alt="profile-bg" className={classes.bg}/>

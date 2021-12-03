@@ -1,3 +1,5 @@
+import {Dispatch} from "redux";
+import {UsersApi} from "../api/api";
 
 export type UserPageType = {
     users: Array<UsersType>
@@ -94,6 +96,7 @@ const usersReducer = (state: UserPageType = initState, action: GenericType) => {
 type GenericType = followUserACType | unfollowUserACType | setUsersACType
     | setTotalUsersCountType | setCurrentPageType | setISFetchingType | setISFollowedType;
 
+// Actions
 export type followUserACType = ReturnType<typeof followUserAC>
 export const followUserAC = (userId: string) => {
     return{
@@ -149,6 +152,45 @@ export const setISFollowed = (s: boolean, userId: string) => {
         s,
         userId
     } as const
+}
+
+// Thunk
+export const getUsers = (usersCount: number, currentPage: number) => {
+    return (dispatch: Dispatch) => {
+        dispatch(setCurrentPage(currentPage))
+        dispatch(setISFetching(true))
+        UsersApi.getUsers(usersCount, currentPage)
+            .then(response => {
+                dispatch(setUsersAC(response.items))
+                dispatch(setISFetching(false))
+            })
+    }
+}
+
+export const followUser = (userId: string) => {
+    return (dispatch: Dispatch) => {
+        dispatch(setISFollowed(true, userId))
+        UsersApi.followUser(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(followUserAC(userId))
+                    dispatch(setISFollowed(false, userId))
+                }
+            })
+    }
+}
+
+export const unFollowUser = (userId: string) => {
+    return (dispatch: Dispatch) => {
+        dispatch(setISFollowed(true, userId))
+        UsersApi.unFollowUser(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unfollowUserAC(userId))
+                    dispatch(setISFollowed(false, userId))
+                }
+            })
+    }
 }
 
 

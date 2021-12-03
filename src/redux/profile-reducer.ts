@@ -1,3 +1,5 @@
+import {Dispatch} from "redux";
+import {ProfileApi} from "../api/api";
 
 export type ProfilePageType = {
     posts: Array<PostType>
@@ -107,7 +109,7 @@ const profileReducer = (state: ProfilePageType = initState, action: GenericType)
 }
 
 export type GenericType = updateNewPostMessageACType | addNewPostACType | incLikesACType | setUserProfileType;
-
+//Actions
 export type updateNewPostMessageACType = ReturnType<typeof updateNewPostMessageAC>
 export const updateNewPostMessageAC = (value: string) => {
     return{
@@ -140,6 +142,15 @@ export const setUserProfile = (userProfile: any) => {
         userProfile
     } as const
 }
+//Thunk
 
+export const setUSerProfile = (paramsId: string | undefined) => {
+    return (dispatch: Dispatch) => {
+        ProfileApi.getProfile(paramsId)
+            .then(response => {
+                dispatch(setUserProfile(response.data))
+            })
+    }
+}
 
 export default profileReducer
