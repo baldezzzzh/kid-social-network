@@ -72,11 +72,11 @@ const Users = React.memo(() => {
         <section className={classes.users}>
             {usersPage.isFetching ? <Preloader/> : null}
             <div className={classes.users_inner}>
+                <div className={classes.pagination}>
+                    {pagination}
+                </div>
                 <div className={classes.users_elements}>
                     {users}
-                </div>
-                <div>
-                    {pagination}
                 </div>
             </div>
         </section>

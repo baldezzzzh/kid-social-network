@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 
 import classes from "./Main.module.css";
@@ -15,16 +15,13 @@ const Main = React.memo((props: any) => {
         <main className={classes.main}>
             <Navbar/>
             <Routes>
+                <Route path="/" element={<Navigate replace to="/profile" />} />
                 <Route path={'/profile'} element={<Profile/>}/>
                 <Route path={'/profile/:id'} element={<Profile/>}/>
                 <Route path={'/users'} element={<Users/>}/>
                 <Route path={'/login'} element={<Login/>}/>
                 <Route path={'/daily-quote'} element={<DailyQuote/>}/>
             </Routes>
-
-
-
-
         </main>
     )
 })

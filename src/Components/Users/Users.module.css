@@ -82,6 +82,10 @@
 .userBtn:disabled{
     background-color: #0f686e;
 }
+.pagination{
+    width: fit-content;
+    margin: 0 auto 30px;
+}
 .activePaginationBtn,
 .paginationBtn{
     font-weight: bold;
