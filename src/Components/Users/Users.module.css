@@ -1,3 +1,4 @@
+
 .users{
     max-width: 100%;
     width: 100%;
@@ -83,7 +84,7 @@
     background-color: #0f686e;
 }
 .pagination{
-    width: fit-content;
+    width: 450px;
     margin: 0 auto 30px;
 }
 .activePaginationBtn,

@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {UsersApi} from "../api/api";
+import {UsersApi} from "../DAL/api";
 
 export type UserPageType = {
     users: Array<UsersType>
@@ -29,7 +29,7 @@ export type UsersType = {
 }
 const initState: UserPageType = {
     users: [],
-    pagesNumber: 5,
+    pagesNumber: 10,
     usersCount: 10,
     currentPage: 2,
     totalCount: 10,

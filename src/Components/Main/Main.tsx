@@ -14,8 +14,9 @@ const Main = React.memo((props: any) => {
     return(
         <main className={classes.main}>
             <Navbar/>
+
             <Routes>
-                <Route path="/" element={<Navigate replace to="/profile" />} />
+                <Route path={'/kid-social-network'} element={<Navigate to={'/profile'}/>}/>
                 <Route path={'/profile'} element={<Profile/>}/>
                 <Route path={'/profile/:id'} element={<Profile/>}/>
                 <Route path={'/users'} element={<Users/>}/>

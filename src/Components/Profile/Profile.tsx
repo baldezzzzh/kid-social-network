@@ -17,7 +17,7 @@ import Posts from "./Posts/Posts";
 import GeneralInfo from "./GeneralInfo/GeneralInfo";
 import AdditionalInfo from "./AdditionalInfo/AdditionalInfo";
 import {Navigate, useParams} from "react-router-dom";
-import {ProfileApi} from "../../api/api";
+import {ProfileApi} from "../../DAL/api";
 
 
 

@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {CommonApi} from "../api/api";
+import {CommonApi} from "../DAL/api";
 
 type setDailyQuoteType = ReturnType<typeof setDailyQuote>
 type setQuoteIsFetchingType = ReturnType<typeof setQuoteIsFetching>

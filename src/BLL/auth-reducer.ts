@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {AuthApi} from "../api/api";
+import {AuthApi} from "../DAL/api";
 
 export type AuthStateType = {
     data: {

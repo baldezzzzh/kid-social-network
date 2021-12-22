@@ -1,12 +1,14 @@
-import React, {useCallback, useEffect} from "react";
+import React, {MouseEventHandler, useCallback, useEffect} from "react";
 import classes from "./Users.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {RootReducerType} from "../../BLL/store";
 import {followUser, getUsers, unFollowUser, UserPageType} from "../../BLL/users-reducer";
-import {Navigate, NavLink} from "react-router-dom";
-import SocialIcons from "../Profile/SocialIcon/SocialIcon";
+import {Navigate} from "react-router-dom";
+
 import Preloader from "../Preloader/Preloader";
 import User from "./User/User";
+import { Pagination } from "@material-ui/core";
+
 
 const Users = React.memo(() => {
 
@@ -19,13 +21,13 @@ const Users = React.memo(() => {
 
     useEffect(() => {
         dispatch(getUsers(usersPage.usersCount, usersPage.currentPage))
-    }, [])
+    }, [dispatch, usersPage.usersCount, usersPage.currentPage])
 
 
-    const setCurrentPageHandler = useCallback((currentPage: number) => {
-        dispatch(getUsers(usersPage.usersCount, currentPage))
-    },[dispatch, usersPage.usersCount])
 
+    const onPageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+        dispatch(getUsers(usersPage.usersCount, page))
+    }
 
 
     const onClickUnfollowHandler = useCallback((userId: string) => {
@@ -43,15 +45,6 @@ const Users = React.memo(() => {
         paginationArr.push(i)
     }
 
-    let pagination = paginationArr.map(p => {
-        return (
-            <button className={usersPage.currentPage === p ? classes.activePaginationBtn : classes.paginationBtn}
-                    onClick={() => {
-                        setCurrentPageHandler(p)
-                    }}>{p}</button>
-        )
-    })
-
 
     let users = usersPage.users.map(u => {
         return (
@@ -65,6 +58,7 @@ const Users = React.memo(() => {
     })
 
 
+
     return(
         !isAuth ?
             <Navigate replace to="/login" />
@@ -73,7 +67,13 @@ const Users = React.memo(() => {
             {usersPage.isFetching ? <Preloader/> : null}
             <div className={classes.users_inner}>
                 <div className={classes.pagination}>
-                    {pagination}
+                    {/*{pagination}*/}
+                    <Pagination
+                        count={usersPage.pagesNumber}
+                        color="secondary"
+                        page={usersPage.currentPage}
+                        onChange={onPageChange}
+                    />
                 </div>
                 <div className={classes.users_elements}>
                     {users}

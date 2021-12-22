@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {ProfileApi} from "../api/api";
+import {ProfileApi} from "../DAL/api";
 
 export type ProfilePageType = {
     posts: Array<PostType>
