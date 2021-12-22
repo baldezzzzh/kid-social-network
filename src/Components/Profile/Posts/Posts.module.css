@@ -2,30 +2,13 @@
     box-shadow: 0 0 40px 0 rgba(94,92,154, .16);
     background-color: #fff;
     border-radius: 12px;
-    max-width: 520px;
-    width: 100%;
+    width: 47%;
     padding: 32px 28px 28px 28px;
 }
 .btn{
-    display: -ms-flexbox;
-    display: flex;
-    padding: 0px 26px;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -ms-flex-align: center;
-    align-items: center;
-    height: 48px;
-    border-radius: 10px;
     background-color: #4b2093;
     color: #fff;
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-align: center;
-    line-height: 48px;
-    cursor: pointer;
-    transition: background-color .2s ease-in-out, color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
     box-shadow: 4px 7px 12px 0 rgba(176, 0, 245, 0.24);
-    border: none;
     margin-bottom: 20px;
 }
 .title{

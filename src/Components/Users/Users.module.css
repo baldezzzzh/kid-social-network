@@ -1,14 +1,14 @@
 .users{
-    box-shadow: 0 0 40px 0 rgba(94,92,154, .16);
-    background-color: #fff;
-    border-radius: 12px;
-    max-width: 1180px;
+    max-width: 100%;
     width: 100%;
-    margin-left: 80px;
-    margin-top: 30px;
+    padding: 30px 100px 100px;
+    position: relative;
 }
 .users_inner{
     padding: 32px 28px 28px 28px;
+    box-shadow: 0 0 40px 0 rgba(94,92,154, .16);
+    background-color: #fff;
+    border-radius: 12px;
 }
 .users_elements{
     display: flex;
@@ -23,11 +23,19 @@
     justify-content: center;
     align-items: center;
     min-width: 285px;
+    width: 28.1%;
     padding: 32px 28px;
-    margin-right: 20px;
     margin-bottom: 20px;
-
 }
+.user + .user{
+    margin-left: 20px;
+}
+.user:nth-child(4),
+.user:nth-child(7),
+.user:nth-child(10){
+    margin-left: 0px;
+}
+
 .user:last-child{
     margin-right: 0px;
 }

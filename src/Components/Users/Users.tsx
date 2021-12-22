@@ -1,18 +1,20 @@
 import React, {useCallback, useEffect} from "react";
 import classes from "./Users.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {RootReducerType} from "../../redux/store";
-import {followUser, getUsers, unFollowUser, UserPageType} from "../../redux/users-reducer";
-import {NavLink} from "react-router-dom";
+import {RootReducerType} from "../../BLL/store";
+import {followUser, getUsers, unFollowUser, UserPageType} from "../../BLL/users-reducer";
+import {Navigate, NavLink} from "react-router-dom";
 import SocialIcons from "../Profile/SocialIcon/SocialIcon";
 import Preloader from "../Preloader/Preloader";
 import User from "./User/User";
 
 const Users = React.memo(() => {
-    console.log('users')
+
     let dispatch = useDispatch()
 
     const usersPage = useSelector<RootReducerType, UserPageType>(state => state.usersPage)
+    // @ts-ignore
+    let isAuth = useSelector<RootReducerType, boolean>(state => state.authPage.isAuth)
 
 
     useEffect(() => {
@@ -64,15 +66,17 @@ const Users = React.memo(() => {
 
 
     return(
+        !isAuth ?
+            <Navigate replace to="/login" />
+            :
         <section className={classes.users}>
             {usersPage.isFetching ? <Preloader/> : null}
             <div className={classes.users_inner}>
-                <div>
-                    {pagination}
-                </div>
-
                 <div className={classes.users_elements}>
                     {users}
+                </div>
+                <div>
+                    {pagination}
                 </div>
             </div>
         </section>

@@ -9,28 +9,50 @@ const instance = axios.create({
 })
 
 export const UsersApi = {
-    getUsers (usersCount: number, currentPage: number) {
+    getUsers(usersCount: number, currentPage: number) {
         return instance.get(`/users?count=${usersCount}&page=${currentPage}`, {})
             .then(response => {
                 return response.data
             })
     },
-    followUser (userId: string) {
+    followUser(userId: string) {
         return instance.post(`/follow/${userId}`, {}, {})
     },
-    unFollowUser (userId: string) {
+    unFollowUser(userId: string) {
         return instance.delete(`/follow/${userId}`, {})
     }
 }
 
 export const ProfileApi = {
-    getProfile (paramsId: string | undefined) {
-        return instance.get(`https://social-network.samuraijs.com/api/1.0/profile/${paramsId}`)
+    getProfile(paramsId: string | undefined) {
+        return instance.get(`/profile/${paramsId}`)
+    },
+    getStatus(paramsId: string | undefined) {
+        return instance.get(`/profile/status/${paramsId}`)
+            .then(response => {
+                return response.data
+            })
+    },
+    updateStatus(status: Object) {
+        return instance.put(`/profile/status`, {status})
+    }
+}
+export const CommonApi = {
+    getDailyQuote(){
+        return axios.get(`https://animechan.vercel.app/api/random`)
     }
 }
 
-export const AuthApi ={
-    authMe () {
+export const AuthApi = {
+    authMe() {
         return instance.get('/auth/me', {})
+    },
+    login(email:string, password: string, rememberMe = false) {
+        return instance.post(`/auth/login`, {email, password, rememberMe})
+    },
+    logOut(){
+        return instance.delete(`/auth/login`)
     }
 }
+
+

@@ -3,11 +3,13 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import usersReducer from "./users-reducer";
 import thunkMiddleware from 'redux-thunk'
 import {authReducer} from "./auth-reducer";
+import {dailyQuoteReducer} from "./daily-quote-reducer";
 
 const RootReducer = combineReducers({
     profilePage: profileReducer,
     usersPage: usersReducer,
-    authPage: authReducer
+    authPage: authReducer,
+    dailyQuotePage: dailyQuoteReducer
 })
 
 

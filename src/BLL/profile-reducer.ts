@@ -21,6 +21,7 @@ export type ProfileInfo = {
     // avatar: string
     userName: string
     membership: string
+    userStatus: string
     photos: {
         small: string
         large: string
@@ -57,6 +58,7 @@ const initState: ProfilePageType = {
         // avatar: 'https://e7.pngegg.com/pngimages/1009/704/png-clipart-avatar-child-computer-icons-user-profile-smiling-boy-child-face-thumbnail.png',
         userName: 'Julius Kenard',
         membership: 'Pro Member',
+        userStatus: ''
     },
     userProfile: {
         photos: {
@@ -103,12 +105,30 @@ const profileReducer = (state: ProfilePageType = initState, action: GenericType)
                 userProfile: action.userProfile
             }
         }
+        case "GET-USER-STATUS": {
+            return {
+                ...state,
+                profileInfo: {
+                    ...state.profileInfo,
+                    userStatus: action.userStatus
+                }
+            }
+        }
+        case "SET-USER-STATUS": {
+            return {
+                ...state,
+                profileInfo: {
+                    ...state.profileInfo,
+                    userStatus: action.userStatus
+                }
+            }
+        }
 
     }
     return state
 }
 
-export type GenericType = updateNewPostMessageACType | addNewPostACType | incLikesACType | setUserProfileType;
+export type GenericType = updateNewPostMessageACType | addNewPostACType | incLikesACType | setUserProfileType | getUserStatusType | changeUserStatusType;
 //Actions
 export type updateNewPostMessageACType = ReturnType<typeof updateNewPostMessageAC>
 export const updateNewPostMessageAC = (value: string) => {
@@ -142,6 +162,23 @@ export const setUserProfile = (userProfile: any) => {
         userProfile
     } as const
 }
+
+export type getUserStatusType = ReturnType<typeof getUserStatus>
+export const getUserStatus = (userStatus: any) => {
+    return{
+        type: 'GET-USER-STATUS',
+        userStatus
+    } as const
+}
+
+export type  changeUserStatusType = ReturnType<typeof changeUserStatus>
+export const changeUserStatus = (userStatus: Object) => {
+    return{
+        type: 'SET-USER-STATUS',
+        userStatus
+    } as const
+}
+
 //Thunk
 
 export const setUSerProfile = (paramsId: string | undefined) => {
@@ -150,6 +187,25 @@ export const setUSerProfile = (paramsId: string | undefined) => {
             .then(response => {
                 dispatch(setUserProfile(response.data))
             })
+    }
+}
+
+
+export const setUserStatus = (paramsId: string | undefined) => {
+   return (dispatch: Dispatch) => {
+       ProfileApi.getStatus(paramsId)
+           .then(response => {
+               dispatch(getUserStatus(response))
+           })
+   }
+}
+
+export const updateUSerStatus = (status: Object) => {
+    return (dispatch: Dispatch) => {
+        ProfileApi.updateStatus(status)
+            .then( (response) => {
+                dispatch(changeUserStatus(response.status))
+            } )
     }
 }
 

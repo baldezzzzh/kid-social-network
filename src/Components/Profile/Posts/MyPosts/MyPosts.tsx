@@ -1,7 +1,7 @@
 import React from "react";
-import {incLikesAC, PostType} from "../../../../redux/profile-reducer";
+import {incLikesAC, PostType} from "../../../../BLL/profile-reducer";
 import {useDispatch, useSelector} from "react-redux";
-import {RootReducerType} from "../../../../redux/store";
+import {RootReducerType} from "../../../../BLL/store";
 import classes from "./MyPosts.module.css";
 import crownIcon from  './images/crown.svg'
 

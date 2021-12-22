@@ -1,40 +1,61 @@
-import React, {useEffect} from "react";
+import React, {ChangeEvent, ChangeEventHandler, useEffect} from "react";
 import profileBg from './images/profile-bg.png'
 import classes from "./Profile.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {RootReducerType} from "../../redux/store";
-import {PostType, ProfilePageType, setUSerProfile, setUserProfile} from "../../redux/profile-reducer";
+import {RootReducerType} from "../../BLL/store";
+import {
+    changeUserStatus,
+    getUserStatus,
+    PostType,
+    ProfilePageType,
+    setUSerProfile,
+    setUserProfile,
+    setUserStatus, updateUSerStatus
+} from "../../BLL/profile-reducer";
 import SocialIcons from "./SocialIcon/SocialIcon";
 import Posts from "./Posts/Posts";
 import GeneralInfo from "./GeneralInfo/GeneralInfo";
 import AdditionalInfo from "./AdditionalInfo/AdditionalInfo";
-import {UserPageType} from "../../redux/users-reducer";
-import axios from "axios";
-import {Navigate, Route, useParams} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 import {ProfileApi} from "../../api/api";
-import Login from "../Login";
+
 
 
 
 
 const Profile = React.memo(() => {
-    console.log('profile')
     let profile = useSelector<RootReducerType, ProfilePageType>(state => state.profilePage)
+    // @ts-ignore
     let isAuth = useSelector<RootReducerType, boolean>(state => state.authPage.isAuth)
     let dispatch = useDispatch();
-
+    const [editMode, setEditMode] = React.useState(false)
+    const [inputTitle, setInputTitle] = React.useState(profile.profileInfo.userStatus)
     let {id} = useParams();
-
     if(!id){
-        id = '2';
+        id = '20604';
     }
-
     useEffect(() => {
         dispatch(setUSerProfile(id))
-
     }, [id])
+    useEffect( () => {
+       dispatch(setUserStatus(id))
+    },[id] )
 
-    console.log(isAuth)
+
+    const onSetEditMode = () => {
+        setEditMode(true)
+    }
+
+    const onExitEditMode = () => {
+        setEditMode(false)
+        // dispatch(changeUserStatus(inputTitle))
+        dispatch(updateUSerStatus(inputTitle))
+    }
+
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setInputTitle(e.currentTarget.value)
+    }
+
     return (
         !isAuth ?
             <Navigate replace to="/login" />
@@ -66,6 +87,17 @@ const Profile = React.memo(() => {
                         </div>
                         <p className={classes.userName}>{profile.userProfile.fullName}</p>
                         <p className={classes.userMembership}>{profile.profileInfo.membership}</p>
+                        <div>
+                            {editMode
+                                ? <input value={inputTitle}
+                                         onBlur={onExitEditMode}
+                                         autoFocus={true}
+                                         onChange={onChangeHandler}
+                                />
+                                :  <p onDoubleClick={onSetEditMode}>{inputTitle || 'Enter your status'}</p>
+                            }
+                        </div>
+
                     </div>
                     <div className={classes.socialLinks}>
                         <SocialIcons/>

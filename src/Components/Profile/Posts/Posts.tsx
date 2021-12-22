@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from "react";
-import {addNewPostAC, updateNewPostMessageAC} from "../../../redux/profile-reducer";
+import {addNewPostAC, updateNewPostMessageAC} from "../../../BLL/profile-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import MyPosts from "./MyPosts/MyPosts";
 import classes from "./Posts.module.css";
@@ -32,7 +32,7 @@ const Posts = ({newValue}: PostsPropsType) => {
                     className={classes.textarea}
                 />
                 <Button
-                    className={classes.btn}
+                    className={`commonBtn ${classes.btn}`}
                     onClick={addPostOnClickHandler}
                     text={'Add post'}
                 />
