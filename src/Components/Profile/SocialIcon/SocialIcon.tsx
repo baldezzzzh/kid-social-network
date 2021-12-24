@@ -16,8 +16,8 @@ const socialIcons = [
 const SocialIcons = () => {
     const socialIcon = socialIcons.map( i => {
         return(
-            <a href="#" className={classes.icon}>
-                <img src={i.icon} alt="icon" className={classes.iconImg}/>
+            <a href="#" className={classes.icon} >
+                <img  src={i.icon} alt="icon" className={classes.iconImg}/>
             </a>
         )
     } )

@@ -3,7 +3,6 @@ import {Formik} from "formik";
 import {useDispatch} from "react-redux";
 import {getIsLogin} from "../../../BLL/auth-reducer";
 import s from './LoginForm.module.css'
-import Button from "../../Buttons/Button";
 
 
 const initialValues = {
@@ -16,7 +15,7 @@ const submitForm = (values: any) => {
     console.log(values);
 };
 
-const LoginForm = () => {
+const LoginForm = React.memo(() => {
     let dispatch = useDispatch()
     const [disabled, setDisabled] = React.useState(false)
     const validate = (values: any) => {
@@ -123,6 +122,6 @@ const LoginForm = () => {
             }}
         </Formik>
     );
-};
+})
 
 export default LoginForm;

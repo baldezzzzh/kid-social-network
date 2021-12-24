@@ -5,6 +5,7 @@ import Button from "../Buttons/Button";
 import {AuthStateType, logOut, setMyAuthData} from "../../BLL/auth-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {RootReducerType} from "../../BLL/store";
+import {NavLink} from "react-router-dom";
 const Header = React.memo(() => {
 
     let authData = useSelector<RootReducerType, AuthStateType>(state => state.authPage)
@@ -12,7 +13,7 @@ const Header = React.memo(() => {
 
     useEffect( () => {
         dispatch(setMyAuthData())
-    } ,[] )
+    } ,[dispatch] )
 
     const onLogout = () => {
         dispatch(logOut())
@@ -21,9 +22,9 @@ const Header = React.memo(() => {
         <header>
             <div className={classes.inner}>
                 <div className={classes.logoInner}>
-                    <a href="#" className={classes.logo}>
+                    <NavLink to={'/profile'} className={classes.logo}>
                         <img src={headerLogo} alt="header-logo"/>
-                    </a>
+                    </NavLink>
                     <p>Lumos</p>
                 </div>
                 {/*<div className={classes.bigMenuSwitcher}>*/}

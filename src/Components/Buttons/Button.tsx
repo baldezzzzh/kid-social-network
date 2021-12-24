@@ -1,5 +1,4 @@
 import React from "react";
-import s from './Button.module.css'
 
 
 type ButtonPropsType = {
@@ -8,7 +7,6 @@ type ButtonPropsType = {
     text: string
 
 }
-
 
 
 const Button = React.memo(({className, onClick, text}: ButtonPropsType) => {

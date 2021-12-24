@@ -1,15 +1,11 @@
-import React, {ChangeEvent, ChangeEventHandler, useEffect} from "react";
+import React, {ChangeEvent, useCallback, useEffect} from "react";
 import profileBg from './images/profile-bg.png'
 import classes from "./Profile.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {RootReducerType} from "../../BLL/store";
 import {
-    changeUserStatus,
-    getUserStatus,
-    PostType,
     ProfilePageType,
     setUSerProfile,
-    setUserProfile,
     setUserStatus, updateUSerStatus
 } from "../../BLL/profile-reducer";
 import SocialIcons from "./SocialIcon/SocialIcon";
@@ -17,7 +13,7 @@ import Posts from "./Posts/Posts";
 import GeneralInfo from "./GeneralInfo/GeneralInfo";
 import AdditionalInfo from "./AdditionalInfo/AdditionalInfo";
 import {Navigate, useParams} from "react-router-dom";
-import {ProfileApi} from "../../DAL/api";
+import userAvatar from './../../images/profile-avatar.png'
 
 
 
@@ -36,26 +32,25 @@ const Profile = React.memo(() => {
     }
     useEffect(() => {
         dispatch(setUSerProfile(id))
-    }, [id])
+    }, [id, dispatch])
     useEffect( () => {
        dispatch(setUserStatus(id))
-    },[id] )
+    },[id, dispatch] )
 
 
     const onSetEditMode = () => {
         setEditMode(true)
     }
 
-    const onExitEditMode = () => {
+    const onExitEditMode = useCallback(() => {
         setEditMode(false)
-        // dispatch(changeUserStatus(inputTitle))
         dispatch(updateUSerStatus(inputTitle))
-    }
+    },[dispatch, inputTitle])
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setInputTitle(e.currentTarget.value)
     }
-
+    console.log(typeof profile.profileInfo.photos.large)
     return (
         !isAuth ?
             <Navigate replace to="/login" />
@@ -81,7 +76,7 @@ const Profile = React.memo(() => {
                     <div className={classes.header_mid}>
                         <div className={classes.header_mid_box}>
                             <div className={classes.avatar_box}>
-                                <img src={profile.userProfile.photos.large} alt="avatar" className={classes.avatar}/>
+                                <img src={profile.userProfile.photos.large === null ? userAvatar : profile.userProfile.photos.large} alt="avatar" className={classes.avatar}/>
                             </div>
                             <p className={classes.userLevel}>4</p>
                         </div>

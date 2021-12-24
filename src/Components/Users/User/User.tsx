@@ -2,9 +2,8 @@ import React from "react";
 import classes from "../Users.module.css";
 import {NavLink} from "react-router-dom";
 import SocialIcons from "../../Profile/SocialIcon/SocialIcon";
-import {UserType} from "../../../BLL/profile-reducer";
 import {UsersType} from "../../../BLL/users-reducer";
-
+import userAvatar from './../../../images/profile-avatar.png'
 
 type UserPropsType = {
     user: UsersType
@@ -18,15 +17,13 @@ const User = React.memo(({user, userIsFollowed, onClickFollowHandler, onClickUnf
     return(
         <div key={user.id} id={user.id} className={classes.user}>
             <div className={classes.avatar}>
-                <img src={user.photos.small} alt="avatar"/>
+                <img src={user.photos.small === null ? userAvatar : user.photos.small} alt="avatar"/>
             </div>
-            <NavLink to={'/profile/' + user.id}>
+            <NavLink to={'/profile/' + user.id} className={classes.visitUser}>
                 <h4 className={classes.userName}>{user.name}</h4>
             </NavLink>
 
             <p>{user.message}</p>
-            {/*<p>{u.location.country}</p>*/}
-            {/*<p>{u.location.city}</p>*/}
             {user.followed
                 ? <button disabled={userIsFollowed.some(id => id === user.id)}
                           onClick={() => onClickUnfollowHandler(user.id)} className={classes.userBtn}>Unfollow</button>

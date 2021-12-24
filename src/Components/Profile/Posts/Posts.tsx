@@ -1,6 +1,6 @@
-import React, {ChangeEvent} from "react";
+import React, {ChangeEvent, useCallback} from "react";
 import {addNewPostAC, updateNewPostMessageAC} from "../../../BLL/profile-reducer";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import MyPosts from "./MyPosts/MyPosts";
 import classes from "./Posts.module.css";
 import Button from "../../Buttons/Button";
@@ -9,17 +9,17 @@ type PostsPropsType = {
     newValue: string
 }
 
-const Posts = ({newValue}: PostsPropsType) => {
+const Posts = React.memo(({newValue}: PostsPropsType) => {
 
     let dispatch = useDispatch()
-    const addPostOnClickHandler = () => {
+    const addPostOnClickHandler = useCallback(() => {
         if(newValue){
             dispatch(addNewPostAC(newValue))
         }
-    }
-    const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    },[dispatch, newValue])
+    const onChangeHandler = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
         dispatch(updateNewPostMessageAC(e.currentTarget.value))
-    }
+    },[dispatch])
 
 
     return(
@@ -41,6 +41,6 @@ const Posts = ({newValue}: PostsPropsType) => {
             <MyPosts/>
         </div>
     )
-}
+})
 
 export default Posts

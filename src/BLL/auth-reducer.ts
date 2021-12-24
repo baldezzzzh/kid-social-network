@@ -97,8 +97,6 @@ export const getIsLogin = (email: string, password: string, rememberMe: boolean)
                 if (response.data.resultCode === 0) {
                     // @ts-ignore
                     dispatch(setMyAuthData())
-                } else {
-                    throw 'Incorrect password'
                 }
             })
     }
@@ -110,8 +108,6 @@ export const logOut = () => {
             .then((response) => {
                 if (response.data.resultCode === 0) {
                     dispatch(setAuthData(null, null, null, false))
-                } else {
-                    throw 'Incorrect password'
                 }
             })
     }

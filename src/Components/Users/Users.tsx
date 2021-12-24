@@ -1,17 +1,16 @@
-import React, {MouseEventHandler, useCallback, useEffect} from "react";
+import React, { useCallback, useEffect} from "react";
 import classes from "./Users.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {RootReducerType} from "../../BLL/store";
 import {followUser, getUsers, unFollowUser, UserPageType} from "../../BLL/users-reducer";
 import {Navigate} from "react-router-dom";
-
 import Preloader from "../Preloader/Preloader";
 import User from "./User/User";
 import { Pagination } from "@material-ui/core";
 
 
 const Users = React.memo(() => {
-
+    console.log('users')
     let dispatch = useDispatch()
 
     const usersPage = useSelector<RootReducerType, UserPageType>(state => state.usersPage)
@@ -25,9 +24,9 @@ const Users = React.memo(() => {
 
 
 
-    const onPageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    const onPageChange = useCallback((event: React.ChangeEvent<unknown>, page: number) => {
         dispatch(getUsers(usersPage.usersCount, page))
-    }
+    },[dispatch, usersPage.usersCount])
 
 
     const onClickUnfollowHandler = useCallback((userId: string) => {
@@ -37,13 +36,6 @@ const Users = React.memo(() => {
     const onClickFollowHandler = useCallback((userId: string) => {
         dispatch(followUser(userId))
     },[dispatch])
-
-
-    let paginationArr = [];
-
-    for (let i = 1; i < 10; i++) {
-        paginationArr.push(i)
-    }
 
 
     let users = usersPage.users.map(u => {
@@ -73,6 +65,7 @@ const Users = React.memo(() => {
                         color="secondary"
                         page={usersPage.currentPage}
                         onChange={onPageChange}
+                        size={'large'}
                     />
                 </div>
                 <div className={classes.users_elements}>

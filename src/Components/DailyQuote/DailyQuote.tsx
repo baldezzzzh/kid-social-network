@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getDailyQuote} from "../../BLL/daily-quote-reducer";
 import {RootReducerType} from "../../BLL/store";
@@ -15,11 +15,11 @@ const DailyQuote = React.memo(() => {
 
     useEffect( () => {
         dispatch(getDailyQuote())
-    },[] )
+    },[dispatch] )
 
-    const onGetQuote = () => {
+    const onGetQuote = useCallback(() => {
         dispatch(getDailyQuote())
-    }
+    },[dispatch])
 
     return(
         <section className={classes.inner}>

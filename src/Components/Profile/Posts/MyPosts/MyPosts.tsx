@@ -1,13 +1,15 @@
 import React from "react";
-import {incLikesAC, PostType} from "../../../../BLL/profile-reducer";
+import {incLikesAC, PostType, ProfilePageType} from "../../../../BLL/profile-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {RootReducerType} from "../../../../BLL/store";
 import classes from "./MyPosts.module.css";
 import crownIcon from  './images/crown.svg'
+import userAvatar from './../../../../images/profile-avatar.png'
 
 
 const MyPosts = () => {
     let posts = useSelector<RootReducerType, Array<PostType>>(state => state.profilePage.posts)
+    let profile = useSelector<RootReducerType, ProfilePageType>(state => state.profilePage)
     let dispatch = useDispatch()
     const onClickHandler = (postId: string, likesCounter: number) => {
         dispatch(incLikesAC(postId, likesCounter))
@@ -17,7 +19,9 @@ const MyPosts = () => {
         return(
             <div key={t.id} id={t.id} className={classes.post}>
                 <div className={classes.info_line}>
-                    <div className={classes.avatar}></div>
+                    <div className={classes.avatar}>
+                        <img src={profile.userProfile.photos.small === null ? userAvatar : profile.userProfile.photos.small} alt="avatar"/>
+                    </div>
                     <p className={classes.message}>{t.message}</p>
                 </div>
                 <div className={classes.likesInner}>
