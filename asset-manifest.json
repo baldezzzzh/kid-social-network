@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/kid-social-network/static/css/main.cdfadc02.chunk.css",
-    "main.js": "/kid-social-network/static/js/main.adae6434.chunk.js",
-    "main.js.map": "/kid-social-network/static/js/main.adae6434.chunk.js.map",
+    "main.css": "/kid-social-network/static/css/main.66816e35.chunk.css",
+    "main.js": "/kid-social-network/static/js/main.112c387c.chunk.js",
+    "main.js.map": "/kid-social-network/static/js/main.112c387c.chunk.js.map",
     "runtime-main.js": "/kid-social-network/static/js/runtime-main.d0ada99f.js",
     "runtime-main.js.map": "/kid-social-network/static/js/runtime-main.d0ada99f.js.map",
     "static/js/2.b7aa0216.chunk.js": "/kid-social-network/static/js/2.b7aa0216.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.dade5b65.chunk.js": "/kid-social-network/static/js/3.dade5b65.chunk.js",
     "static/js/3.dade5b65.chunk.js.map": "/kid-social-network/static/js/3.dade5b65.chunk.js.map",
     "index.html": "/kid-social-network/index.html",
-    "static/css/main.cdfadc02.chunk.css.map": "/kid-social-network/static/css/main.cdfadc02.chunk.css.map",
+    "static/css/main.66816e35.chunk.css.map": "/kid-social-network/static/css/main.66816e35.chunk.css.map",
     "static/js/2.b7aa0216.chunk.js.LICENSE.txt": "/kid-social-network/static/js/2.b7aa0216.chunk.js.LICENSE.txt",
     "static/media/crown.baa223b2.svg": "/kid-social-network/static/media/crown.baa223b2.svg",
     "static/media/header-logo.ad29cc75.png": "/kid-social-network/static/media/header-logo.ad29cc75.png",
@@ -18,6 +18,7 @@
     "static/media/messages.1bad7cf9.svg": "/kid-social-network/static/media/messages.1bad7cf9.svg",
     "static/media/music.1bac8f02.svg": "/kid-social-network/static/media/music.1bac8f02.svg",
     "static/media/preloader.4ccf66d6.gif": "/kid-social-network/static/media/preloader.4ccf66d6.gif",
+    "static/media/profile-avatar.e2b0c687.png": "/kid-social-network/static/media/profile-avatar.e2b0c687.png",
     "static/media/profile-bg.c2555e70.png": "/kid-social-network/static/media/profile-bg.c2555e70.png",
     "static/media/profile.9d4d5a29.svg": "/kid-social-network/static/media/profile.9d4d5a29.svg",
     "static/media/q.6adffa40.jpg": "/kid-social-network/static/media/q.6adffa40.jpg",
@@ -30,7 +31,7 @@
   "entrypoints": [
     "static/js/runtime-main.d0ada99f.js",
     "static/js/2.b7aa0216.chunk.js",
-    "static/css/main.cdfadc02.chunk.css",
-    "static/js/main.adae6434.chunk.js"
+    "static/css/main.66816e35.chunk.css",
+    "static/js/main.112c387c.chunk.js"
   ]
 }
