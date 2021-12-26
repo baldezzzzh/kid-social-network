@@ -1,5 +1,26 @@
 import axios from "axios";
 
+
+export type ArticleItemType = {
+    source: {
+        id: string
+        name: string
+    }
+    author: string
+    title: string
+    description: string
+    url: string
+    urlToImage: string
+    publishedAt: string
+    content: string
+}
+
+export type NewsResponseType = {
+    status: string
+    totalResults: number
+    articles: Array<ArticleItemType>
+}
+
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0',
     headers: {
@@ -40,6 +61,12 @@ export const ProfileApi = {
 export const CommonApi = {
     getDailyQuote(){
         return axios.get(`https://animechan.vercel.app/api/random`)
+    }
+}
+
+export const NewsApi = {
+    getNews(articlesCount: number, currentPage: number){
+        return axios.get<NewsResponseType>(`https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=10&page=${currentPage}&apiKey=c0b099f14fff4628ae16e5c63887ae09`)
     }
 }
 

@@ -4,12 +4,14 @@ import usersReducer from "./users-reducer";
 import thunkMiddleware from 'redux-thunk'
 import {authReducer} from "./auth-reducer";
 import {dailyQuoteReducer} from "./daily-quote-reducer";
+import {newsReducer} from "./news-reducer";
 
 const RootReducer = combineReducers({
     profilePage: profileReducer,
     usersPage: usersReducer,
     authPage: authReducer,
-    dailyQuotePage: dailyQuoteReducer
+    dailyQuotePage: dailyQuoteReducer,
+    newsPage: newsReducer
 })
 
 
