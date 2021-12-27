@@ -31,3 +31,7 @@ img{
     box-shadow: 4px 7px 12px 0 rgba(35,210,226, .2);
     border: none;
 }
+.css-acap47-MuiAlert-message{
+    font-size: 18px;
+    font-weight: bold;
+}

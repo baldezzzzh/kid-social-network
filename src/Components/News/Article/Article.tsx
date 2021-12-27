@@ -13,7 +13,7 @@ export const Article = React.memo(({article}: ArticlePropsType) => {
             <h2 className={s.title}>{article.title}</h2>
             <p className={s.sourceName}>{article.source.name}</p>
             <div className={s.image}>
-                <img src={article.urlToImage ? article.urlToImage : emptyImg} alt="article-image"/>
+                <img src={article.urlToImage ? article.urlToImage : emptyImg} alt="article-img"/>
             </div>
             <p className={s.description}>{article.description}</p>
         </a>
