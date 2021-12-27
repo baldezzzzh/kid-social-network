@@ -11,7 +11,18 @@ export type NewsInitStateType = {
 }
 
 const initState = {
-    articles: [],
+    articles: [
+        {
+            author: "Kerrie Hughes",
+            content: "2021-12-27T10:15:08.991Z\r\n(Image credit: Nintendo)\r\nMorning everyone! Do you wish it could be Christmas every day? Well it kind of is, with today being the official substitute day for Christmas Day i… [+11015 chars]",
+            description: "The best deals on Nintendo Switch, games and accessories.",
+            publishedAt: "2021-12-27T08:17:11Z",
+            source: {id: '', name: "Creative Bloq"},
+            title: "Nintendo Switch after Christmas sales live blog: the best Nintendo Switch deals live now - Creative Bloq",
+            url: "https://www.creativebloq.com/news/live/nintendo-switch-boxing-day-deals",
+            urlToImage: "https://cdn.mos.cms.futurecdn.net/daVy7d593wadBE4FPTuDTa-1200-80.jpg"
+        }
+    ],
     totalResults: 0,
     currentPage: 1,
     articlesCount: 10,
@@ -46,7 +57,8 @@ export const newsReducer = (state: NewsInitStateType = initState, action: Generi
         }
 
 
-        default: return state
+        default:
+            return state
     }
 }
 
@@ -61,7 +73,7 @@ type setNewsCurrentPage = ReturnType<typeof setNewsCurrentPage>
 type setNewsIsFetchingType = ReturnType<typeof setNewsIsFetching>
 
 export const setNewsState = (articles: Array<ArticleItemType>) => {
-    return{
+    return {
         type: 'NEWS/SET-NEWS-STATE',
         articles
     } as const
@@ -69,21 +81,21 @@ export const setNewsState = (articles: Array<ArticleItemType>) => {
 
 
 export const setNewsTotalItems = (itemsCount: number) => {
-    return{
+    return {
         type: 'NEWS/SET-NEWS-TOTAL-ITEMS',
         itemsCount
     } as const
 }
 
 export const setNewsCurrentPage = (currentPage: number) => {
-    return{
+    return {
         type: 'NEWS/SET-NEWS-CURRENT-PAGE',
         currentPage
     } as const
 }
 
 export const setNewsIsFetching = (isFetching: boolean) => {
-    return{
+    return {
         type: 'NEWS/SET-NEWS-IS-FETCHING',
         isFetching
     } as const
@@ -94,10 +106,15 @@ export const getNewsState = (articlesCount: number, currentPage: number) => {
         dispatch(setNewsCurrentPage(currentPage))
         dispatch(setNewsIsFetching(true))
         NewsApi.getNews(articlesCount, currentPage)
-            .then((response)=>{
-                console.log(response.data.articles)
-                dispatch(setNewsState(response.data.articles))
-                dispatch(setNewsTotalItems(response.data.totalResults))
+            .then((response) => {
+                if (response.status === 200){
+                    console.log(response.data.articles)
+                    dispatch(setNewsState(response.data.articles))
+                    dispatch(setNewsTotalItems(response.data.totalResults))
+                }
+            })
+            .catch()
+            .finally(()=> {
                 dispatch(setNewsIsFetching(false))
             })
     }
