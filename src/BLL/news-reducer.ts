@@ -9,7 +9,7 @@ export type NewsInitStateType = {
     articlesCount: number
     isFetching: boolean
     isSuccess: boolean | null
-    warning: boolean
+    warning: boolean | null
 }
 
 const initState = {
@@ -60,7 +60,7 @@ const initState = {
     articlesCount: 10,
     isFetching: false,
     isSuccess: null,
-    warning: true
+    warning: null
 }
 
 export const newsReducer = (state: NewsInitStateType = initState, action: GenericActionType) => {

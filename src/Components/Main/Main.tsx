@@ -7,6 +7,8 @@ import Login from "../Login/Login";
 import DailyQuote from "../DailyQuote/DailyQuote";
 import News from "../News/News";
 import classes from "./Main.module.css";
+import Music from "../Music/Music";
+
 
 
 const Main = React.memo((props: any) => {
@@ -23,6 +25,7 @@ const Main = React.memo((props: any) => {
                 <Route path={'/users'} element={<Users/>}/>
                 <Route path={'/login'} element={<Login/>}/>
                 <Route path={'/daily-quote'} element={<DailyQuote/>}/>
+                <Route path={'/music'} element={<Music/>}/>
             </Routes>
         </main>
     )
