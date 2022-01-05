@@ -5,13 +5,15 @@ import thunkMiddleware from 'redux-thunk'
 import {authReducer} from "./auth-reducer";
 import {dailyQuoteReducer} from "./daily-quote-reducer";
 import {newsReducer} from "./news-reducer";
+import {spotifyReducer} from "./spotify-reducer";
 
 const RootReducer = combineReducers({
     profilePage: profileReducer,
     usersPage: usersReducer,
     authPage: authReducer,
     dailyQuotePage: dailyQuoteReducer,
-    newsPage: newsReducer
+    newsPage: newsReducer,
+    musicPage: spotifyReducer
 })
 
 

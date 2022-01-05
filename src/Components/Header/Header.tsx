@@ -2,9 +2,9 @@ import React, {useEffect} from "react";
 import classes from "./Header.module.css";
 import headerLogo from './headerImages/header-logo.png'
 import Button from "../Buttons/Button";
-import {AuthStateType, logOut, setMyAuthData} from "../../BLL/auth-reducer";
+import {AuthStateType, logOut, setMyAuthData} from "../../redux-store/auth-reducer";
 import {useDispatch, useSelector} from "react-redux";
-import {RootReducerType} from "../../BLL/store";
+import {RootReducerType} from "../../redux-store/store";
 import {NavLink} from "react-router-dom";
 const Header = React.memo(() => {
 

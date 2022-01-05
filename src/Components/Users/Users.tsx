@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect} from "react";
 import classes from "./Users.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {RootReducerType} from "../../BLL/store";
-import {followUser, getUsers, unFollowUser, UserPageType} from "../../BLL/users-reducer";
+import {RootReducerType} from "../../redux-store/store";
+import {followUser, getUsers, unFollowUser, UserPageType} from "../../redux-store/users-reducer";
 import {Navigate} from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
 import User from "./User/User";

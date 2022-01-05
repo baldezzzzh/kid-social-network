@@ -20,7 +20,7 @@ const Player = ({accessToken, trackUri} : PlayerPropsType) => {
         if(!state.isPlaying) setPlay(false)
         }}
         play={true}
-        autoPlay={true}
+        autoPlay={play}
         uris={trackUri ? [trackUri] : []
         }
     />

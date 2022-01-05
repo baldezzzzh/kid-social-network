@@ -4,16 +4,21 @@ import SpotifyWebApi from 'spotify-web-api-node'
 import TrackResults from "../TrackResults/TrackResults";
 import Player from "../SpotifyPlayer/SpotifyPlayer";
 import axios from "axios";
+import s from './SpotifyDashboard.module.scss'
+import TextField from "@material-ui/core/TextField";
+import {useDispatch} from "react-redux";
+import {setRecommendedTracksTC} from "../../../redux-store/spotify-reducer";
 
 type SpotifyDashboardPropsType = {
     code: string | null
 }
-const spotifyApi = new SpotifyWebApi({
+export const spotifyApi = new SpotifyWebApi({
     clientId: '7e6e290c64014eda969fac88d74f34be',
 
 })
 
 const SpotifyDashboard = ({code}: SpotifyDashboardPropsType) => {
+    const dispatch = useDispatch()
     const accessToken = useAuth(code)
     const [search, setSearch] = React.useState('')
     const [searchResults, setSearchResults] = React.useState([])
@@ -60,9 +65,9 @@ const SpotifyDashboard = ({code}: SpotifyDashboardPropsType) => {
                 // @ts-ignore
                 setSearchResults(response.body.tracks!.items.map( track => {
                     const smallestAlbumImage = track.album.images.reduce(
-                        (smallest, image) => {
-                            if (image.height! < smallest.height!) return image
-                            return smallest
+                        (biggest, image) => {
+                            if (image.height! > biggest.height!) return image
+                            return biggest
                         }, track.album.images[0])
 
 
@@ -77,6 +82,12 @@ const SpotifyDashboard = ({code}: SpotifyDashboardPropsType) => {
         return () => cancel = true
     },[search, accessToken])
 
+
+    useEffect( () => {
+        if(!accessToken) return
+        dispatch(setRecommendedTracksTC())
+    } )
+
     const searchOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setSearch(e.currentTarget.value)
     }
@@ -85,15 +96,27 @@ const SpotifyDashboard = ({code}: SpotifyDashboardPropsType) => {
     let currentTrack = playingTrack?.uri;
 
 
+
     return(
-        <div>
-            <input type="search"
-                   placeholder={'Search Songs'}
-                   value={search}
-                   onChange={searchOnChangeHandler}
-            />
+        <div className={s.inner}>
+            {/*<input type="search"*/}
+            {/*       placeholder={'Search Songs'}*/}
+            {/*       value={search}*/}
+            {/*       onChange={searchOnChangeHandler}*/}
+            {/*       className={s.searchInput}*/}
+            {/*/>*/}
+            <div className={s.searchInput}>
+                <TextField
+                    placeholder={'Search Songs'}
+                    value={search}
+                    label={'Search Songs'}
+                    onChange={searchOnChangeHandler}
+                />
+            </div>
+
             <div>
-                {searchResults.map( track => {
+
+                {searchResults.length === 0 ? <div>No tracks found with such name, please try to type another name</div> : searchResults.map( track => {
                     const {uri} = track;
                     return(
                         <TrackResults track={track} key={uri} chooseTrack={chooseTrack}/>

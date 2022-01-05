@@ -2,8 +2,8 @@ import React, {useCallback, useEffect} from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/core/Alert";
 import {useDispatch, useSelector} from "react-redux";
-import {RootReducerType} from "../../../BLL/store";
-import {NewsInitStateType, setNewsWarning} from "../../../BLL/news-reducer";
+import {RootReducerType} from "../../../redux-store/store";
+import {NewsInitStateType, setNewsWarning} from "../../../redux-store/news-reducer";
 
 const NewsEmpty = React.memo(() => {
     const warning = useSelector<RootReducerType, boolean | null>((state) => state.newsPage.warning)

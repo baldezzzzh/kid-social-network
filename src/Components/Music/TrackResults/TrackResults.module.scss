@@ -1,0 +1,21 @@
+.trackImgInner{
+  max-width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  img{
+    object-fit: contain;
+    border-radius: inherit;
+  }
+}
+.track{
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  border-radius: 12px;
+  box-shadow: rgb(78,10,175) -5px 5px,
+  rgba(78,10,175, 0.3) -10px 10px,
+  rgba(78,10,175, 0.2) -15px 15px,
+  rgba(78,10,175, 0.1) -20px 20px,
+  rgba(78,10,175, 0.05) -25px 25px;
+  padding-right: 15px;
+}

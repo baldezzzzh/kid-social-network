@@ -2,12 +2,12 @@ import React, {ChangeEvent, useCallback, useEffect} from "react";
 import profileBg from './images/profile-bg.png'
 import classes from "./Profile.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {RootReducerType} from "../../BLL/store";
+import {RootReducerType} from "../../redux-store/store";
 import {
     ProfilePageType,
     setUSerProfile,
     setUserStatus, updateUSerStatus
-} from "../../BLL/profile-reducer";
+} from "../../redux-store/profile-reducer";
 import SocialIcons from "./SocialIcon/SocialIcon";
 import Posts from "./Posts/Posts";
 import GeneralInfo from "./GeneralInfo/GeneralInfo";

@@ -2,7 +2,7 @@ import React from "react";
 import LoginForm from "./LoginForm/LoginForm";
 import classes from "./Login.module.scss";
 import {useSelector} from "react-redux";
-import {RootReducerType} from "../../BLL/store";
+import {RootReducerType} from "../../redux-store/store";
 import {Navigate} from "react-router-dom";
 
 

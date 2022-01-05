@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getDailyQuote} from "../../BLL/daily-quote-reducer";
-import {RootReducerType} from "../../BLL/store";
+import {getDailyQuote} from "../../redux-store/daily-quote-reducer";
+import {RootReducerType} from "../../redux-store/store";
 import Button from "../Buttons/Button";
 import classes from "./DailyQuote.module.scss";
 import quoteBg from './../../images/q.jpg'

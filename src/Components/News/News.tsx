@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect} from "react";
-import {getNewsState, NewsInitStateType} from "../../BLL/news-reducer";
+import {getNewsState, NewsInitStateType} from "../../redux-store/news-reducer";
 import {useDispatch, useSelector} from "react-redux";
-import {RootReducerType} from "../../BLL/store";
+import {RootReducerType} from "../../redux-store/store";
 import Article from "./Article/Article";
 import s from './News.module.scss'
 import {Pagination} from "@material-ui/core";
@@ -51,5 +51,17 @@ const News = React.memo(() => {
         </section>
     )
 })
+
+
+function incrementer(nums: Array<number>) {
+
+    for (let i = 0; i < nums.length; i++){
+        console.log(i + 1)
+        nums[i] += i + 1;
+    }
+    return nums
+}
+
+incrementer([1,2,3])
 
 export default News

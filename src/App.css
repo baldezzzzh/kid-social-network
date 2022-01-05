@@ -10,8 +10,8 @@ img{
 
 .commonBtn{
     text-decoration: none;
-    color: aliceblue;
     display: -ms-flexbox;
+    width: fit-content;
     display: flex;
     padding: 0px 26px;
     -ms-flex-pack: center;

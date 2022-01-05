@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./AboutMe.module.css";
 import {useSelector} from "react-redux";
-import {RootReducerType} from "../../../../BLL/store";
-import {UserType} from "../../../../BLL/profile-reducer";
+import {RootReducerType} from "../../../../redux-store/store";
+import {UserType} from "../../../../redux-store/profile-reducer";
 
 const AboutMe = () => {
 

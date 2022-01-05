@@ -7,6 +7,7 @@ import Footer from "./Components/Footer/Footer";
 
 
 function App() {
+    console.log('app')
     return (
       <>
           <div className="App">

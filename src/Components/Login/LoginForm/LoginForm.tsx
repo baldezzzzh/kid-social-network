@@ -1,7 +1,7 @@
 import React from "react";
 import {Formik} from "formik";
 import {useDispatch} from "react-redux";
-import {getIsLogin} from "../../../BLL/auth-reducer";
+import {getIsLogin} from "../../../redux-store/auth-reducer";
 import s from './LoginForm.module.css'
 
 

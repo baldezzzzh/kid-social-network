@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../Users.module.css";
 import {NavLink} from "react-router-dom";
 import SocialIcons from "../../Profile/SocialIcon/SocialIcon";
-import {UsersType} from "../../../BLL/users-reducer";
+import {UsersType} from "../../../redux-store/users-reducer";
 import userAvatar from './../../../images/profile-avatar.png'
 
 type UserPropsType = {

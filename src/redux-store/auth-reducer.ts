@@ -79,14 +79,15 @@ export const setIsLogin = (id: number) => {
 //Thunk
 
 export const setMyAuthData = () => {
-    return (dispatch: Dispatch) => {
-        AuthApi.authMe()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let {id, login, email} = response.data.data;
-                    dispatch(setAuthData(id, login, email, true))
-                }
-            })
+    return async (dispatch: Dispatch) => {
+        try {
+            const response = await AuthApi.authMe()
+            if (response.data.resultCode === 0) {
+                let {id, login, email} = response.data.data;
+                dispatch(setAuthData(id, login, email, true))
+            }
+        }
+        catch (error: any){}
     }
 }
 

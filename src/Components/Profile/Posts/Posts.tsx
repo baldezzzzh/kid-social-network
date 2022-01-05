@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useCallback} from "react";
-import {addNewPostAC, updateNewPostMessageAC} from "../../../BLL/profile-reducer";
+import {addNewPostAC, updateNewPostMessageAC} from "../../../redux-store/profile-reducer";
 import {useDispatch} from "react-redux";
 import MyPosts from "./MyPosts/MyPosts";
 import classes from "./Posts.module.css";

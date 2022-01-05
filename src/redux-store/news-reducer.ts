@@ -89,7 +89,7 @@ export const newsReducer = (state: NewsInitStateType = initState, action: Generi
                 isFetching: action.isFetching
             }
         }
-        case "NEWS/SET-NEWS-RESPONSE-SUCCESS":{
+        case "NEWS/SET-NEWS-RESPONSE-SUCCESS": {
             return {
                 ...state,
                 isSuccess: action.isSuccess
@@ -157,38 +157,36 @@ export const setNewsIsFetching = (isFetching: boolean) => {
 }
 
 export const setNewsResponseSuccess = (isSuccess: boolean) => {
-    return{
+    return {
         type: 'NEWS/SET-NEWS-RESPONSE-SUCCESS',
         isSuccess
     } as const
 }
 
 export const setNewsWarning = (warning: boolean) => {
-    return{
+    return {
         type: 'NEWS/SET-NEWS-WARNING',
         warning
     } as const
 }
 
 export const getNewsState = (articlesCount: number, currentPage: number) => {
-    return (dispatch: Dispatch) => {
-        dispatch(setNewsCurrentPage(currentPage))
-        dispatch(setNewsIsFetching(true))
-        NewsApi.getNews(articlesCount, currentPage)
-            .then((response) => {
-                if (response.status === 200){
-                    console.log(response.data.articles)
-                    dispatch(setNewsResponseSuccess(true))
-                    dispatch(setNewsState(response.data.articles))
-                    dispatch(setNewsTotalItems(response.data.totalResults))
-                }
-            })
-            .catch(()=>{
-                dispatch(setNewsResponseSuccess(false))
-            })
-            .finally(()=> {
-                dispatch(setNewsIsFetching(false))
-            })
+    return async (dispatch: Dispatch) => {
+        try {
+            dispatch(setNewsCurrentPage(currentPage))
+            dispatch(setNewsIsFetching(true))
+            const response = await NewsApi.getNews(articlesCount, currentPage)
+            if (response.status === 200) {
+                console.log(response.data.articles)
+                dispatch(setNewsResponseSuccess(true))
+                dispatch(setNewsState(response.data.articles))
+                dispatch(setNewsTotalItems(response.data.totalResults))
+            }
+        } catch (error: any) {
+            dispatch(setNewsResponseSuccess(false))
+        } finally {
+            dispatch(setNewsIsFetching(false))
+        }
     }
 }
 
