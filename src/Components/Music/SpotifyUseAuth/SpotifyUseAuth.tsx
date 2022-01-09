@@ -25,7 +25,7 @@ export default function useAuth(code: any) {
                 window.location.href = '/music';
 
             })
-    }, [])
+    }, [code])
 
 
     useEffect(() => {

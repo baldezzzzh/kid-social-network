@@ -19,8 +19,7 @@ const Player = ({accessToken, trackUri} : PlayerPropsType) => {
         callback={state => {
         if(!state.isPlaying) setPlay(false)
         }}
-        play={true}
-        autoPlay={play}
+        play={play}
         uris={trackUri ? [trackUri] : []
         }
     />

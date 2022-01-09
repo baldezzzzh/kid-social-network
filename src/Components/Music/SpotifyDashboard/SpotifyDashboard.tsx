@@ -3,11 +3,12 @@ import useAuth from "../SpotifyUseAuth/SpotifyUseAuth";
 import SpotifyWebApi from 'spotify-web-api-node'
 import TrackResults from "../TrackResults/TrackResults";
 import Player from "../SpotifyPlayer/SpotifyPlayer";
-import axios from "axios";
 import s from './SpotifyDashboard.module.scss'
 import TextField from "@material-ui/core/TextField";
-import {useDispatch} from "react-redux";
-import {setRecommendedTracksTC} from "../../../redux-store/spotify-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {setRecommendedTracksTC, SpotifyMusicState} from "../../../redux-store/spotify-reducer";
+import {RootReducerType} from "../../../redux-store/store";
+import RecommendedTrack from "../RecommendedTrack/RecommendedTrack";
 
 type SpotifyDashboardPropsType = {
     code: string | null
@@ -17,34 +18,33 @@ export const spotifyApi = new SpotifyWebApi({
 
 })
 
-const SpotifyDashboard = ({code}: SpotifyDashboardPropsType) => {
+const SpotifyDashboard = React.memo(({code}: SpotifyDashboardPropsType) => {
     const dispatch = useDispatch()
+    const spotifyState = useSelector<RootReducerType, SpotifyMusicState>(state => state.musicPage)
     const accessToken = useAuth(code)
     const [search, setSearch] = React.useState('')
     const [searchResults, setSearchResults] = React.useState([])
     const [playingTrack, setPlayingTrack] = React.useState()
-    const [lyrics, setLyrics] = React.useState('')
 
     const chooseTrack = (track: any) => {
         setPlayingTrack(track)
         setSearch('')
-        setLyrics('')
     }
 
-    useEffect(()=> {
-        if (!playingTrack) return
-        const {title} = playingTrack;
-        const {artist} = playingTrack;
-        axios.get('http://localhost:3001/lyrics', {
-            params: {
-                track: title,
-                artist: artist
-            }
-        })
-            .then((response) => {
-                setLyrics(response.data.lyrics)
-            })
-    },[playingTrack])
+    // useEffect(()=> {
+    //     if (!playingTrack) return
+    //     const {title} = playingTrack;
+    //     const {artist} = playingTrack;
+    //     axios.get('http://localhost:3001/lyrics', {
+    //         params: {
+    //             track: title,
+    //             artist: artist
+    //         }
+    //     })
+    //         .then((response) => {
+    //             setLyrics(response.data.lyrics)
+    //         })
+    // },[playingTrack])
 
     useEffect(()=>{
         if(!accessToken) return
@@ -86,7 +86,7 @@ const SpotifyDashboard = ({code}: SpotifyDashboardPropsType) => {
     useEffect( () => {
         if(!accessToken) return
         dispatch(setRecommendedTracksTC())
-    } )
+    },[accessToken, dispatch] )
 
     const searchOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setSearch(e.currentTarget.value)
@@ -97,14 +97,15 @@ const SpotifyDashboard = ({code}: SpotifyDashboardPropsType) => {
 
 
 
+    const recTrack = spotifyState.recommendedTracks.map( t => {
+        const recTrackImageUrl = t.album.images.map( i => i.url )[0]
+        return(
+            <RecommendedTrack track={t} trackImageUrl={recTrackImageUrl} key={t.uri}  chooseTrack={chooseTrack}/>
+        )
+    } )
+
     return(
         <div className={s.inner}>
-            {/*<input type="search"*/}
-            {/*       placeholder={'Search Songs'}*/}
-            {/*       value={search}*/}
-            {/*       onChange={searchOnChangeHandler}*/}
-            {/*       className={s.searchInput}*/}
-            {/*/>*/}
             <div className={s.searchInput}>
                 <TextField
                     placeholder={'Search Songs'}
@@ -113,22 +114,21 @@ const SpotifyDashboard = ({code}: SpotifyDashboardPropsType) => {
                     onChange={searchOnChangeHandler}
                 />
             </div>
-
+            <Player accessToken={accessToken} trackUri={currentTrack}/>
             <div>
-
-                {searchResults.length === 0 ? <div>No tracks found with such name, please try to type another name</div> : searchResults.map( track => {
+                {searchResults.length === 0 ? <div>{recTrack}</div> : searchResults.map( track => {
                     const {uri} = track;
                     return(
                         <TrackResults track={track} key={uri} chooseTrack={chooseTrack}/>
                     )
                 })}
-                {searchResults.length === 0 && (
-                    <div>{lyrics}</div>
-                )}
+                {/*{searchResults.length === 0 && (*/}
+                {/*    <div>{lyrics}</div>*/}
+                {/*)}*/}
             </div>
-            <Player accessToken={accessToken} trackUri={currentTrack}/>
+
         </div>
     )
-}
+})
 
 export default SpotifyDashboard

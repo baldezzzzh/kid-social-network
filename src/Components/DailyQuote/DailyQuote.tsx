@@ -35,4 +35,9 @@ const DailyQuote = React.memo(() => {
     )
 })
 
+
+
+
+
+
 export default DailyQuote

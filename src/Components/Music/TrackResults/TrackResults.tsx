@@ -1,5 +1,6 @@
 import React from 'react'
 import s from './TrackResults.module.scss'
+import Button from "../../Buttons/Button";
 
 
 type TrackResultsPropsType = {
@@ -19,9 +20,13 @@ const TrackResults = ({track, chooseTrack}: TrackResultsPropsType) => {
             <div className={s.trackImgInner}>
                 <img src={track.albumUrl} alt="album-image"/>
             </div>
-            <h4>{track.title}</h4>
-            <p>{track.artist}</p>
-            <button onClick={handlePlay}>play</button>
+            <div className={s.trackInner}>
+                <div className={s.trackDescription}>
+                    <h4 className={s.title}>{track.title}</h4>
+                    <p className={s.artist}>{track.artist}</p>
+                </div>
+                <Button className={`commonBtn`} onClick={handlePlay} text={'Play'}/>
+            </div>
         </div>
     )
 }
