@@ -11,7 +11,7 @@ export default function useAuth(code: any) {
 
     useEffect(() => {
 
-        axios.post('http://localhost:3001/login', {
+        axios.post('https://spotify-for-social-network.herokuapp.com/', {
             code,
         })
 
@@ -31,7 +31,7 @@ export default function useAuth(code: any) {
     useEffect(() => {
         if (!refreshToken || !expiresIn) return
         const interval = setInterval(() => {
-            axios.post('http://localhost:3001/refresh', {
+            axios.post('https://spotify-for-social-network.herokuapp.com/', {
                 code,
             })
                 .then((response) => {
