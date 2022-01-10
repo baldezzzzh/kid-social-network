@@ -15,7 +15,7 @@ export default function useAuth(code: any) {
 
     useEffect(() => {
 
-        instance.post('/login', {
+        instance.post('login', {
             code,
         })
 
@@ -36,7 +36,7 @@ export default function useAuth(code: any) {
     useEffect(() => {
         if (!refreshToken || !expiresIn) return
         const interval = setInterval(() => {
-            instance.post('/refresh', {
+            instance.post('refresh', {
                 code,
             })
                 .then((response) => {
