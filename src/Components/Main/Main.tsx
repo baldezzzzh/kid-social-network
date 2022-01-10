@@ -8,6 +8,7 @@ import DailyQuote from "../DailyQuote/DailyQuote";
 import News from "../News/News";
 import classes from "./Main.module.css";
 import Music from "../Music/Music";
+import StartPage from "../StartPage/StartPage";
 
 
 
@@ -18,7 +19,7 @@ const Main = React.memo((props: any) => {
             <Navbar/>
 
             <Routes>
-                <Route path={'/kid-social-network'} element={<Navigate to={'/profile'}/>}/>
+                <Route path={'/kid-social-network'} element={<StartPage/>}/>
                 <Route path={'/profile'} element={<Profile/>}/>
                 <Route path={'/profile/:id'} element={<Profile/>}/>
                 <Route path={'/news'} element={<News/>}/>

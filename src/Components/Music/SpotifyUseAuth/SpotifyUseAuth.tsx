@@ -24,7 +24,7 @@ export default function useAuth(code: any) {
                 navigate('/music')
             })
             .catch((error: any) => {
-                window.location.href = '/music';
+                navigate('/music')
 
             })
     }, [code])
@@ -39,6 +39,7 @@ export default function useAuth(code: any) {
                 .then((response) => {
                     setAccessToken(response.data.accessToken)
                     setExpiresIn(response.data.expiresIn)
+                    navigate('/music')
                 })
                 .catch(() => {
                     navigate('/music')
