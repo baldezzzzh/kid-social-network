@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 export default function useAuth(code: any) {
 
@@ -8,6 +9,7 @@ export default function useAuth(code: any) {
     const [refreshToken, setRefreshToken] = React.useState()
     const [expiresIn, setExpiresIn] = React.useState()
 
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -19,7 +21,7 @@ export default function useAuth(code: any) {
                 setAccessToken(response.data.accessToken)
                 setRefreshToken(response.data.refreshToken)
                 setExpiresIn(response.data.expiresIn)
-                window.history.pushState({}, '', '/music')
+                navigate('/music')
             })
             .catch((error: any) => {
                 window.location.href = '/music';
@@ -39,7 +41,7 @@ export default function useAuth(code: any) {
                     setExpiresIn(response.data.expiresIn)
                 })
                 .catch(() => {
-                    window.location.href = '/music';
+                    navigate('/music')
                 })
         }, (expiresIn - 60) * 1000)
         return () => clearInterval(interval)
