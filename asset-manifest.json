@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/kid-social-network/static/css/main.a07b7e3a.chunk.css",
-    "main.js": "/kid-social-network/static/js/main.5dd092d6.chunk.js",
-    "main.js.map": "/kid-social-network/static/js/main.5dd092d6.chunk.js.map",
+    "main.js": "/kid-social-network/static/js/main.c5617312.chunk.js",
+    "main.js.map": "/kid-social-network/static/js/main.c5617312.chunk.js.map",
     "runtime-main.js": "/kid-social-network/static/js/runtime-main.6e502c1f.js",
     "runtime-main.js.map": "/kid-social-network/static/js/runtime-main.6e502c1f.js.map",
     "static/js/2.18983865.chunk.js": "/kid-social-network/static/js/2.18983865.chunk.js",
@@ -34,6 +34,6 @@
     "static/js/runtime-main.6e502c1f.js",
     "static/js/2.18983865.chunk.js",
     "static/css/main.a07b7e3a.chunk.css",
-    "static/js/main.5dd092d6.chunk.js"
+    "static/js/main.c5617312.chunk.js"
   ]
 }
