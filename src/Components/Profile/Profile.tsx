@@ -17,7 +17,7 @@ import userAvatar from './../../images/profile-avatar.png'
 
 
 
-
+const code = new URLSearchParams(window.location.search).get("code")
 
 const Profile = React.memo(() => {
     let profile = useSelector<RootReducerType, ProfilePageType>(state => state.profilePage)
@@ -30,6 +30,9 @@ const Profile = React.memo(() => {
     if(!id){
         id = '20604';
     }
+
+    if (code) return <Navigate replace to={'/music'}/>
+
     useEffect(() => {
         dispatch(setUSerProfile(id))
     }, [id, dispatch])
