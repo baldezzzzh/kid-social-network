@@ -3,6 +3,8 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 const instance = axios.create({
     baseURL: 'https://spotify-for-social-network.herokuapp.com/'
+    // baseURL: 'http://localhost:3001',
+
 })
 export default function useAuth(code: any) {
 
@@ -15,28 +17,31 @@ export default function useAuth(code: any) {
 
     useEffect(() => {
 
-        instance.post('login', {
+        instance.post('/login', {
             code,
         })
 
             .then((response) => {
+                console.log('t')
                 setAccessToken(response.data.accessToken)
+                console.log(response.data.accessToken)
                 setRefreshToken(response.data.refreshToken)
                 setExpiresIn(response.data.expiresIn)
                 navigate('/music')
             })
             .catch((error: any) => {
+                console.log('e')
                 navigate('/music')
                 console.log(error)
 
             })
-    }, [code])
+    }, [code, navigate])
 
 
     useEffect(() => {
         if (!refreshToken || !expiresIn) return
         const interval = setInterval(() => {
-            instance.post('refresh', {
+            instance.post('/refresh', {
                 code,
             })
                 .then((response) => {
@@ -50,7 +55,7 @@ export default function useAuth(code: any) {
         }, (expiresIn - 60) * 1000)
         return () => clearInterval(interval)
 
-    }, [refreshToken, expiresIn, code])
+    }, [refreshToken, expiresIn, code, navigate])
 
     return accessToken
 }

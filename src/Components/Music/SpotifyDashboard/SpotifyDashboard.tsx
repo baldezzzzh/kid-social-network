@@ -22,6 +22,7 @@ const SpotifyDashboard = React.memo(({code}: SpotifyDashboardPropsType) => {
     const dispatch = useDispatch()
     const spotifyState = useSelector<RootReducerType, SpotifyMusicState>(state => state.musicPage)
     const accessToken = useAuth(code)
+    console.log(accessToken)
     const [search, setSearch] = React.useState('')
     const [searchResults, setSearchResults] = React.useState([])
     const [playingTrack, setPlayingTrack] = React.useState()
