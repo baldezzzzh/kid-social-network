@@ -30,9 +30,6 @@ const Profile = React.memo(() => {
     if(!id){
         id = '20604';
     }
-
-    if (code) return <Navigate replace to={'/music'}/>
-
     useEffect(() => {
         dispatch(setUSerProfile(id))
     }, [id, dispatch])
@@ -54,6 +51,7 @@ const Profile = React.memo(() => {
         setInputTitle(e.currentTarget.value)
     }
     console.log(typeof profile.profileInfo.photos.large)
+    if (code) return <Navigate replace to={'/music'}/>
     return (
         !isAuth ?
             <Navigate replace to="/login" />
