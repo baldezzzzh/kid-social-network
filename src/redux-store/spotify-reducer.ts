@@ -97,6 +97,13 @@ export const setSpotifyData = (accessToken: string | undefined, refreshToken: st
     } as const
 }
 
+// export const rememberMeSpotify = (rememberMe: boolean) => {
+//     return{
+//         type: 'SPOTIFY/REMEMBER-ME',
+//         rememberMe
+//     } as const
+// }
+
 export const setRecommendedTracksTC = () => (dispatch: Dispatch) => {
     spotifyApi.getRecommendations({
         min_energy: 0.4,

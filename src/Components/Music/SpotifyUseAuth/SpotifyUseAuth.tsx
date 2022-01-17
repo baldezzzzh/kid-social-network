@@ -1,13 +1,10 @@
 import React, {useEffect} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
 const instance = axios.create({
     baseURL: 'https://spotify-for-social-network.herokuapp.com/'
 })
 export default function useAuth(code: any) {
-
-
     const [accessToken, setAccessToken] = React.useState()
     const [refreshToken, setRefreshToken] = React.useState()
     const [expiresIn, setExpiresIn] = React.useState()
@@ -15,6 +12,7 @@ export default function useAuth(code: any) {
     const navigate = useNavigate()
 
     useEffect(() => {
+        if(accessToken) return
         instance.post('/login', {code,})
             .then((response) => {
                 setAccessToken(response.data.accessToken)
@@ -24,7 +22,6 @@ export default function useAuth(code: any) {
                 navigate('/music')
             })
             .catch((error: any) => {
-
                 navigate('/music')
                 console.log(error)
 
