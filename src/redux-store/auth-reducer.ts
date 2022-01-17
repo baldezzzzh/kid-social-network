@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {AuthApi} from "../DAL/api";
+import {setAppIsInitialized} from "./app-reducer";
 
 export type AuthStateType = {
     data: {
@@ -88,6 +89,9 @@ export const setMyAuthData = () => {
             }
         }
         catch (error: any){}
+        finally {
+            dispatch(setAppIsInitialized(true))
+        }
     }
 }
 

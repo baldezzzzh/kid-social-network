@@ -29,6 +29,10 @@ const instance = axios.create({
     withCredentials: true
 })
 
+const herokuInstance = axios.create({
+    baseURL: 'https://spotify-for-social-network.herokuapp.com/'
+})
+
 export const UsersApi = {
     getUsers(usersCount: number, currentPage: number) {
         return instance.get(`/users?count=${usersCount}&page=${currentPage}`, {})
@@ -67,6 +71,25 @@ export const CommonApi = {
 export const NewsApi = {
     getNews(articlesCount: number, currentPage: number){
         return axios.get<NewsResponseType>(`https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=10&page=${currentPage}&apiKey=c0b099f14fff4628ae16e5c63887ae09`)
+    }
+}
+
+export const spotifyMyApi = {
+    spotifyLogin(code: string){
+        return  herokuInstance.post('/login', {code})
+            // .then((response) => {
+            //     setAccessToken(response.data.accessToken)
+            //     console.log(response.data.accessToken)
+            //     setRefreshToken(response.data.refreshToken)
+            //     setExpiresIn(response.data.expiresIn)
+            //     navigate('/music')
+            // })
+            // .catch((error: any) => {
+            //
+            //     navigate('/music')
+            //     console.log(error)
+            //
+            // })
     }
 }
 

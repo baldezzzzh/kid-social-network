@@ -19,6 +19,7 @@ const Main = React.memo((props: any) => {
             <Navbar/>
 
             <Routes>
+                <Route path={'/'} element={<StartPage/>}/>
                 <Route path={'/kid-social-network'} element={<StartPage/>}/>
                 <Route path={'/profile'} element={<Profile/>}/>
                 <Route path={'/profile/:id'} element={<Profile/>}/>

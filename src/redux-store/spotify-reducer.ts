@@ -1,5 +1,7 @@
 import {Dispatch} from "redux";
 import {spotifyApi} from "../Components/Music/SpotifyDashboard/SpotifyDashboard";
+import {spotifyMyApi} from "../DAL/api";
+import {setAppIsLoading} from "./app-reducer";
 
 
 export type RecommendedTrackItem = {
@@ -81,4 +83,21 @@ export const setRecommendedTracksTC = () => (dispatch: Dispatch) => {
             dispatch(setRecommendedTracks(response.body.tracks))
             console.log(response.body.tracks)
         })
+}
+
+export const setSpotifyLogin = (code: string, setAccessToken: Function, setRefreshToken: Function , setExpiresIn: Function ) => async (dispatch: Dispatch) => {
+    const response = await spotifyMyApi.spotifyLogin(code)
+    dispatch(setAppIsLoading(true))
+    try {
+        setAccessToken(response.data.accessToken)
+        console.log(response.data.accessToken)
+        setRefreshToken(response.data.refreshToken)
+        setExpiresIn(response.data.expiresIn)
+    }
+    catch (error){
+        console.log(error)
+    }
+    finally {
+        setAppIsLoading(false)
+    }
 }

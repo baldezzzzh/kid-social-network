@@ -13,9 +13,7 @@ const Header = React.memo(() => {
     const navigate = useNavigate();
     let dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(setMyAuthData())
-    }, [dispatch])
+
 
     const onLogout = () => {
         dispatch(logOut())

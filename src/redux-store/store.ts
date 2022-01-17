@@ -6,6 +6,7 @@ import {authReducer} from "./auth-reducer";
 import {dailyQuoteReducer} from "./daily-quote-reducer";
 import {newsReducer} from "./news-reducer";
 import {spotifyReducer} from "./spotify-reducer";
+import {appReducer} from "./app-reducer";
 
 const RootReducer = combineReducers({
     profilePage: profileReducer,
@@ -13,7 +14,8 @@ const RootReducer = combineReducers({
     authPage: authReducer,
     dailyQuotePage: dailyQuoteReducer,
     newsPage: newsReducer,
-    musicPage: spotifyReducer
+    musicPage: spotifyReducer,
+    appPage: appReducer
 })
 
 
