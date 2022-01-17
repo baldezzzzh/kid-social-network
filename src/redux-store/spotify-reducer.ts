@@ -127,23 +127,23 @@ export const setRecommendedTracksTC = () => (dispatch: Dispatch) => {
         })
 }
 
-export const setSpotifyLogin = (code: string, accessToken: string | undefined, refreshToken: string | undefined , expiresIn: string | undefined  ) => async (dispatch: Dispatch) => {
-    const response = await spotifyMyApi.spotifyLogin(code)
-    console.log('qewqeqeq')
-    dispatch(setAppIsLoading(true))
-    try {
-        console.log('try')
-        accessToken = response.data.accessToken;
-        refreshToken = response.data.refreshToken;
-        expiresIn = response.data.expiresIn;
-        dispatch(setSpotifyData(accessToken, refreshToken, expiresIn))
-    }
-    catch (error){
-        console.log(1)
-        console.log(error)
-    }
-    finally {
-        console.log(2)
-        dispatch(setAppIsLoading(false))
-    }
-}
+// export const setSpotifyLogin = (code: string, accessToken: string | undefined, refreshToken: string | undefined , expiresIn: string | undefined  ) => async (dispatch: Dispatch) => {
+//     const response = await spotifyMyApi.spotifyLogin(code)
+//     console.log('qewqeqeq')
+//     dispatch(setAppIsLoading(true))
+//     try {
+//         console.log('try')
+//         accessToken = response.data.accessToken;
+//         refreshToken = response.data.refreshToken;
+//         expiresIn = response.data.expiresIn;
+//         dispatch(setSpotifyData(accessToken, refreshToken, expiresIn))
+//     }
+//     catch (error){
+//         console.log(1)
+//         console.log(error)
+//     }
+//     finally {
+//         console.log(2)
+//         dispatch(setAppIsLoading(false))
+//     }
+// }
