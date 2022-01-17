@@ -74,24 +74,6 @@ export const NewsApi = {
     }
 }
 
-export const spotifyMyApi = {
-    spotifyLogin(code: string){
-        return  herokuInstance.post('/login', {code})
-            // .then((response) => {
-            //     setAccessToken(response.data.accessToken)
-            //     console.log(response.data.accessToken)
-            //     setRefreshToken(response.data.refreshToken)
-            //     setExpiresIn(response.data.expiresIn)
-            //     navigate('/music')
-            // })
-            // .catch((error: any) => {
-            //
-            //     navigate('/music')
-            //     console.log(error)
-            //
-            // })
-    }
-}
 
 export const AuthApi = {
     authMe() {

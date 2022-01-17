@@ -1,7 +1,6 @@
 import {Dispatch} from "redux";
 import {spotifyApi} from "../Components/Music/SpotifyDashboard/SpotifyDashboard";
-import {spotifyMyApi} from "../DAL/api";
-import {setAppIsLoading} from "./app-reducer";
+
 
 
 export type RecommendedTrackItem = {

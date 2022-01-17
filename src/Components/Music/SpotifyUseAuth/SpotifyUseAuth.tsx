@@ -7,7 +7,7 @@ const instance = axios.create({
 })
 export default function useAuth(code: any) {
 
-    const dispatch = useDispatch();
+
     const [accessToken, setAccessToken] = React.useState()
     const [refreshToken, setRefreshToken] = React.useState()
     const [expiresIn, setExpiresIn] = React.useState()
