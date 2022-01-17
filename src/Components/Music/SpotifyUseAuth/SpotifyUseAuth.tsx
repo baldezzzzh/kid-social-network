@@ -28,7 +28,7 @@ export default function useAuth(code: any) {
                 navigate('/music')
                 console.log(error)
             })
-    }, [code, navigate])
+    }, [code, navigate, spotifyPage.accessToken])
 
 
     useEffect(() => {
