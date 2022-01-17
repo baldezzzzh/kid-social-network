@@ -72,6 +72,12 @@ export const spotifyReducer = (state: SpotifyMusicState = InitState, action: Act
                 rememberMe: action.rememberMe
             }
         }
+        case "SPOTIFY/SET-ACCESS-TOKEN": {
+            return {
+                ...state,
+                accessToken: action.accessToken
+            }
+        }
 
 
         default: return state
@@ -79,7 +85,11 @@ export const spotifyReducer = (state: SpotifyMusicState = InitState, action: Act
 }
 
 
-type ActionType = ReturnType<typeof setRecommendedTracks> | ReturnType<typeof getAuthCode> | ReturnType<typeof setSpotifyData> | ReturnType<typeof rememberMeSpotify> ;
+type ActionType = ReturnType<typeof setRecommendedTracks>
+    | ReturnType<typeof getAuthCode>
+    | ReturnType<typeof setSpotifyData>
+    | ReturnType<typeof rememberMeSpotify>
+    | ReturnType<typeof setAccessToken>;
 
 
 
@@ -112,6 +122,13 @@ export const rememberMeSpotify = (rememberMe: boolean) => {
     return{
         type: 'SPOTIFY/REMEMBER-ME',
         rememberMe
+    } as const
+}
+
+export const setAccessToken = (accessToken: string) => {
+    return{
+        type: 'SPOTIFY/SET-ACCESS-TOKEN',
+        accessToken
     } as const
 }
 

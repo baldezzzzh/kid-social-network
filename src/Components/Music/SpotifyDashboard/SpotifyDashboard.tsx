@@ -6,7 +6,7 @@ import Player from "../SpotifyPlayer/SpotifyPlayer";
 import s from './SpotifyDashboard.module.scss'
 import TextField from "@material-ui/core/TextField";
 import {useDispatch, useSelector} from "react-redux";
-import {setRecommendedTracksTC, SpotifyMusicState} from "../../../redux-store/spotify-reducer";
+import {setAccessToken, setRecommendedTracksTC, SpotifyMusicState} from "../../../redux-store/spotify-reducer";
 import {RootReducerType} from "../../../redux-store/store";
 import RecommendedTrack from "../RecommendedTrack/RecommendedTrack";
 
@@ -36,9 +36,8 @@ const SpotifyDashboard = React.memo(({code}: SpotifyDashboardPropsType) => {
 
     useEffect(()=>{
         if(!accessToken) return
-        console.log(accessToken)
-        console.log(1)
         spotifyApi.setAccessToken(accessToken)
+        dispatch(setAccessToken(accessToken))
     },[accessToken])
 
     // @ts-ignore

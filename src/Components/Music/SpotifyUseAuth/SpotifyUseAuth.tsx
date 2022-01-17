@@ -22,7 +22,6 @@ export default function useAuth(code: any) {
                 console.log(response.data.accessToken)
                 setRefreshToken(response.data.refreshToken)
                 setExpiresIn(response.data.expiresIn)
-                dispatch(setSpotifyData(accessToken, refreshToken, expiresIn))
                 navigate('/music')
             })
             .catch((error: any) => {
