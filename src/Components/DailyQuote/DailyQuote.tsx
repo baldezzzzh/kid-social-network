@@ -6,12 +6,14 @@ import Button from "../Buttons/Button";
 import classes from "./DailyQuote.module.scss";
 import quoteBg from './../../images/q.jpg'
 import Preloader from "../Preloader/Preloader";
+import {Navigate} from "react-router-dom";
 
 const DailyQuote = React.memo(() => {
     const dispatch = useDispatch()
     const quote = useSelector<RootReducerType, string>(state => state.dailyQuotePage.quote)
     const isFetching = useSelector<RootReducerType, boolean>(state => state.dailyQuotePage.isFetching)
-
+    // @ts-ignore
+    let isAuth = useSelector<RootReducerType, boolean>(state => state.authPage.isAuth)
 
     useEffect( () => {
         dispatch(getDailyQuote())
@@ -22,6 +24,9 @@ const DailyQuote = React.memo(() => {
     },[dispatch])
 
     return(
+        !isAuth ?
+            <Navigate replace to="/kid-social-network" />
+            :
         <section className={classes.inner}>
             {isFetching ? <Preloader/> : null}
             <div className={classes.quoteInner}>

@@ -5,20 +5,27 @@ import Button from "../Buttons/Button";
 import {AuthStateType, logOut, setMyAuthData} from "../../redux-store/auth-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {RootReducerType} from "../../redux-store/store";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+
 const Header = React.memo(() => {
 
     let authData = useSelector<RootReducerType, AuthStateType>(state => state.authPage)
+    const navigate = useNavigate();
     let dispatch = useDispatch()
 
-    useEffect( () => {
+    useEffect(() => {
         dispatch(setMyAuthData())
-    } ,[dispatch] )
+    }, [dispatch])
 
     const onLogout = () => {
         dispatch(logOut())
     }
-    return(
+
+    const onLogin = () => {
+        navigate('/login')
+    }
+
+    return (
         <header>
             <div className={classes.inner}>
                 <div className={classes.logoInner}>
@@ -44,15 +51,19 @@ const Header = React.memo(() => {
                 {/*<div className={classes.search}>*/}
                 {/*    <input type="search"/>*/}
                 {/*</div>*/}
-                {authData.isAuth
-                    ?
-                    <div className={classes.loginButtons}>
-                        <p className={classes.userName}>Welcome {authData.data.login}</p>
-                        <Button className={'commonBtn'} onClick={onLogout} text={'Log out'}/>
-                    </div>
-                    :
-                    <Button className={'commonBtn'} onClick={()=>{} } text={'Login'}/>
-                }
+                <div >
+                    {
+                        authData.isAuth
+                            ?
+                            <div className={classes.loginButtons}>
+                                <p className={classes.userName}>Welcome {authData.data.login}</p>
+                                <Button className={'commonBtn'} onClick={onLogout} text={'Log out'}/>
+                            </div>
+                            :
+                            <Button className={'commonBtn'} onClick={onLogin} text={'Login'}/>
+                    }
+
+                </div>
             </div>
         </header>
     )

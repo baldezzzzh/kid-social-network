@@ -53,7 +53,7 @@ const Users = React.memo(() => {
 
     return(
         !isAuth ?
-            <Navigate replace to="/login" />
+            <Navigate replace to="/kid-social-network" />
             :
         <section className={classes.users}>
             {usersPage.isFetching ? <Preloader/> : null}

@@ -53,7 +53,7 @@ const Profile = React.memo(() => {
     console.log(typeof profile.profileInfo.photos.large)
     return (
         !isAuth ?
-            <Navigate replace to="/login" />
+            <Navigate replace to="/kid-social-network" />
             :
         <section className={classes.inner}>
             <div className={classes.header}>
