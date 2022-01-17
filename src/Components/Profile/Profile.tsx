@@ -16,9 +16,6 @@ import {Navigate, useParams} from "react-router-dom";
 import userAvatar from './../../images/profile-avatar.png'
 
 
-const code = new URLSearchParams(window.location.search).get("code")
-
-
 const Profile = React.memo(() => {
     let profile = useSelector<RootReducerType, ProfilePageType>(state => state.profilePage)
     // @ts-ignore
@@ -50,10 +47,9 @@ const Profile = React.memo(() => {
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setInputTitle(e.currentTarget.value)
     }
-    console.log(typeof profile.profileInfo.photos.large)
 
 
-    if (code) return <Navigate replace to={'/music'}/>
+
     return (
         !isAuth ?
             <Navigate replace to="/kid-social-network" />
