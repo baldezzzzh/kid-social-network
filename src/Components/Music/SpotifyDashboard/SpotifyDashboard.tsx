@@ -36,6 +36,8 @@ const SpotifyDashboard = React.memo(({code}: SpotifyDashboardPropsType) => {
 
     useEffect(()=>{
         if(!accessToken) return
+        console.log(accessToken)
+        console.log(1)
         spotifyApi.setAccessToken(accessToken)
     },[accessToken])
 

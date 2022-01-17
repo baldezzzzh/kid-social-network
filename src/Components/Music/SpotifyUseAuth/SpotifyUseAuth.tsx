@@ -28,7 +28,6 @@ export default function useAuth(code: any) {
             .catch((error: any) => {
                 navigate('/music')
                 console.log(error)
-
             })
     }, [code, navigate])
 
