@@ -25,13 +25,19 @@ type ArtistItem = {
 
 export type SpotifyMusicState = {
     recommendedTracks: Array<RecommendedTrackItem>
-    code: string | null
+    code: string | null,
+    accessToken: string | undefined,
+    refreshToken: string
+    expiresIn: string
 }
 
 
 const InitState = {
     recommendedTracks: [],
-    code: ''
+    code: '',
+    accessToken: '',
+    refreshToken: '',
+    expiresIn: ''
 }
 
 
@@ -49,12 +55,21 @@ export const spotifyReducer = (state: SpotifyMusicState = InitState, action: Act
                 code: action.code
             }
         }
+        case "SPOTIFY/SET-SPOTIFY-DATA": {
+            return {
+                ...state,
+                accessToken: action.accessToken,
+                refreshToken: action.refreshToken,
+                expiresIn: action.expiresIn
+            }
+        }
+
         default: return state
     }
 }
 
 
-type ActionType = ReturnType<typeof setRecommendedTracks> | ReturnType<typeof getAuthCode>;
+type ActionType = ReturnType<typeof setRecommendedTracks> | ReturnType<typeof getAuthCode> | ReturnType<typeof setSpotifyData>;
 
 
 
@@ -73,6 +88,16 @@ export const getAuthCode = (code: string | null) => {
     } as const
 }
 
+
+export const setSpotifyData = (accessToken: string | undefined, refreshToken: string, expiresIn: string) => {
+    return{
+        type: 'SPOTIFY/SET-SPOTIFY-DATA',
+        accessToken,
+        refreshToken,
+        expiresIn
+    } as const
+}
+
 export const setRecommendedTracksTC = () => (dispatch: Dispatch) => {
     spotifyApi.getRecommendations({
         min_energy: 0.4,
@@ -85,19 +110,23 @@ export const setRecommendedTracksTC = () => (dispatch: Dispatch) => {
         })
 }
 
-export const setSpotifyLogin = (code: string, setAccessToken: Function, setRefreshToken: Function , setExpiresIn: Function ) => async (dispatch: Dispatch) => {
-    const response = await spotifyMyApi.spotifyLogin(code)
-    dispatch(setAppIsLoading(true))
-    try {
-        setAccessToken(response.data.accessToken)
-        console.log(response.data.accessToken)
-        setRefreshToken(response.data.refreshToken)
-        setExpiresIn(response.data.expiresIn)
-    }
-    catch (error){
-        console.log(error)
-    }
-    finally {
-        setAppIsLoading(false)
-    }
-}
+// export const setSpotifyLogin = (code: string, accessToken: string | undefined, refreshToken: string , expiresIn: string  ) => async (dispatch: Dispatch) => {
+//     const response = await spotifyMyApi.spotifyLogin(code)
+//     console.log('qewqeqeq')
+//     dispatch(setAppIsLoading(true))
+//     try {
+//         console.log('try')
+//         accessToken = response.data.accessToken;
+//         refreshToken = response.data.refreshToken;
+//         expiresIn = response.data.expiresIn;
+//         dispatch(setSpotifyData(accessToken, refreshToken, expiresIn))
+//     }
+//     catch (error){
+//         console.log(1)
+//         console.log(error)
+//     }
+//     finally {
+//         console.log(2)
+//         dispatch(setAppIsLoading(false))
+//     }
+// }

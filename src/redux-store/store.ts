@@ -15,7 +15,8 @@ const RootReducer = combineReducers({
     dailyQuotePage: dailyQuoteReducer,
     newsPage: newsReducer,
     musicPage: spotifyReducer,
-    appPage: appReducer
+    appPage: appReducer,
+    spotifyPage: spotifyReducer
 })
 
 

@@ -32,20 +32,7 @@ const SpotifyDashboard = React.memo(({code}: SpotifyDashboardPropsType) => {
         setSearch('')
     }
 
-    // useEffect(()=> {
-    //     if (!playingTrack) return
-    //     const {title} = playingTrack;
-    //     const {artist} = playingTrack;
-    //     axios.get('http://localhost:3001/lyrics', {
-    //         params: {
-    //             track: title,
-    //             artist: artist
-    //         }
-    //     })
-    //         .then((response) => {
-    //             setLyrics(response.data.lyrics)
-    //         })
-    // },[playingTrack])
+
 
     useEffect(()=>{
         if(!accessToken) return

@@ -13,12 +13,9 @@ const StartPage = React.memo(() => {
     const authData = useSelector<RootReducerType, AuthStateType>(state => state.authPage)
     const navigate = useNavigate()
 
-
-    if(authData.isAuth) return  <Navigate replace to={'/profile'}/>
-
     if (code) return <Navigate replace to={'/music'}/>
 
-
+    // if(authData.isAuth) return  <Navigate replace to={'/profile'}/>
 
     const onVisitLoginPageHandler = () => {
         navigate('/login')
@@ -36,10 +33,10 @@ const StartPage = React.memo(() => {
                 <Button className={'commonBtn'} text={'Visit Login page'} onClick={onVisitLoginPageHandler}/>
                 <div className={s.githubLinkInner}>
                     <p className={s.githubText}>To see the entire stack that I have used go to my</p>
-                    <Link to={'https://github.com/csdlabs/kid-social-network'} className={s.githubLink}>
+                    <a href={'https://github.com/csdlabs/kid-social-network'} className={s.githubLink}>
                         <span>Github: </span>
                         <img src={githubLogo} alt="github-logo"/>
-                    </Link>
+                    </a>
                 </div>
                 <div className={`${s.ghost} ${s.ghostTopLeft}`}>
                     <img src={ghostImg} alt="ghost"/>
