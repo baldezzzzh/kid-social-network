@@ -8,7 +8,12 @@ const StartPage = () => {
 
     return(
         <div>
-1
+            <h1>Hi! This is this is SPA a small social network, a pet project based on React/Redux</h1>
+            <p>To test the application use common test account for testing!</p>
+            <div>
+                <p><span>Email:</span> pecab31632@ritumusic.com</p>
+                <p><span>Password:</span>  Account_For_Test</p>
+            </div>
         </div>
     )
 }
