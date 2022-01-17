@@ -16,7 +16,7 @@ export default function useAuth(code: any) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(!accessToken) return
+        if(!spotifyPage.accessToken) return
 
         instance.post('/login', {code})
             .then((response) => {
