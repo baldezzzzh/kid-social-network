@@ -1,6 +1,9 @@
 import React, {useEffect} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {rememberMeSpotify, SpotifyMusicState} from "../../../redux-store/spotify-reducer";
+import {RootReducerType} from "../../../redux-store/store";
 const instance = axios.create({
     baseURL: 'https://spotify-for-social-network.herokuapp.com/'
 })
@@ -8,17 +11,18 @@ export default function useAuth(code: any) {
     const [accessToken, setAccessToken] = React.useState()
     const [refreshToken, setRefreshToken] = React.useState()
     const [expiresIn, setExpiresIn] = React.useState()
-
+    const spotifyPage = useSelector<RootReducerType, SpotifyMusicState>(state => state.spotifyPage)
+    const dispatch = useDispatch();
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(accessToken) return
         instance.post('/login', {code,})
             .then((response) => {
                 setAccessToken(response.data.accessToken)
                 console.log(response.data.accessToken)
                 setRefreshToken(response.data.refreshToken)
                 setExpiresIn(response.data.expiresIn)
+                dispatch(rememberMeSpotify(true))
                 navigate('/music')
             })
             .catch((error: any) => {
@@ -26,7 +30,7 @@ export default function useAuth(code: any) {
                 console.log(error)
 
             })
-    }, [code, navigate])
+    }, [code, navigate, spotifyPage.rememberMe])
 
 
     useEffect(() => {

@@ -28,6 +28,7 @@ export type SpotifyMusicState = {
     accessToken: string | undefined,
     refreshToken: string
     expiresIn: string
+    rememberMe: boolean
 }
 
 
@@ -36,7 +37,8 @@ const InitState = {
     code: '',
     accessToken: '',
     refreshToken: '',
-    expiresIn: ''
+    expiresIn: '',
+    rememberMe: false
 }
 
 
@@ -62,13 +64,20 @@ export const spotifyReducer = (state: SpotifyMusicState = InitState, action: Act
                 expiresIn: action.expiresIn
             }
         }
+        case "SPOTIFY/REMEMBER-ME": {
+            return {
+                ...state,
+                rememberMe: action.rememberMe
+            }
+        }
+
 
         default: return state
     }
 }
 
 
-type ActionType = ReturnType<typeof setRecommendedTracks> | ReturnType<typeof getAuthCode> | ReturnType<typeof setSpotifyData>;
+type ActionType = ReturnType<typeof setRecommendedTracks> | ReturnType<typeof getAuthCode> | ReturnType<typeof setSpotifyData> | ReturnType<typeof rememberMeSpotify> ;
 
 
 
@@ -97,12 +106,12 @@ export const setSpotifyData = (accessToken: string | undefined, refreshToken: st
     } as const
 }
 
-// export const rememberMeSpotify = (rememberMe: boolean) => {
-//     return{
-//         type: 'SPOTIFY/REMEMBER-ME',
-//         rememberMe
-//     } as const
-// }
+export const rememberMeSpotify = (rememberMe: boolean) => {
+    return{
+        type: 'SPOTIFY/REMEMBER-ME',
+        rememberMe
+    } as const
+}
 
 export const setRecommendedTracksTC = () => (dispatch: Dispatch) => {
     spotifyApi.getRecommendations({
