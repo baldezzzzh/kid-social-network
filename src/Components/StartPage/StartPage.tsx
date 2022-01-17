@@ -13,11 +13,11 @@ const StartPage = React.memo(() => {
     const authData = useSelector<RootReducerType, AuthStateType>(state => state.authPage)
     const navigate = useNavigate()
 
-
+    if (code) return <Navigate replace to={'/music'}/>
 
     if(authData.isAuth) return  <Navigate replace to={'/profile'}/>
 
-    if (code) return <Navigate replace to={'/music'}/>
+
 
     const onVisitLoginPageHandler = () => {
         navigate('/login')
